@@ -1,0 +1,52 @@
+
+.greyed.tab-heading a,
+.greyed.tab-heading a:link,
+.greyed.tab-heading a:hover,
+.greyed.tab-heading a:visited,
+.greyed.tab-heading a:focus,
+.greyed.tab-heading a:active,
+.greyed.tab-heading a:-webkit-any-link {
+    text-decoration: none;
+    color: inherit;
+    outline: 0;
+    cursor: auto;
+  }
+
+.greyed {
+    padding: 0;
+    font-size: 60px;
+    font-weight: normal;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.406);
+  }
+
+  
+a {
+    text-decoration: none;
+    color:unset;
+    outline: 0;
+}
+
+
+/* 
+.admin.content-container {
+    width: max-content;
+    overflow-y: auto;
+    background: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    border-radius: 0;
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+  }
+
+  .tab-header {
+    display: flex;
+    align-content: flex-start;
+    align-self: flex-start;
+    flex-direction: row;
+    padding-left: 93px;
+  } 
+  */

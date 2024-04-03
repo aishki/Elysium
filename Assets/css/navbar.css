@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background: linear-gradient(180deg, #120E25 34%, rgba(18, 14, 37, 0) 100%); */
+    background-color: #4d24a1;
+    color: rgb(18, 14, 37);
+    padding: 20px 50px;
+
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the navbar appears above other content */
+}
+
+.logo img {
+    width: 50px;
+}
+
+.nav-links {
+    display: flex;
+}
+
+.nav-item {
+    padding: 0 20px;
+    text-decoration: none;
+    color: #F4FAFF;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+.nav-item.login {
+    color: #a997cb; /* Change color for the "Log-in" link */
+    font-weight: bold;
+}
+
+.content {
+    padding: 20px;
+}

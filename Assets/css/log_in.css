@@ -1,0 +1,7 @@
+body.log-in{
+    background-image: url('../../Assets/login-bg.png');
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-attachment: fixed; /* Fixed background */
+    background-position: center; /* Center the background image horizontally and vertically */
+    color: #F4FAFF;
+}

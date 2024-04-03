@@ -1,0 +1,210 @@
+body.default{
+    background-image: url('../../Assets/default_bg.png');
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-attachment: fixed; /* Fixed background */
+    background-position: center; /* Center the background image horizontally and vertically */
+    color: #F4FAFF;
+}
+
+label,input{
+    display: block;
+}
+
+.empty_label{
+    visibility: hidden;
+}
+
+.regis_container {
+    width: 50%;
+    height: 100%;
+    background: rgba(217, 217, 217, 0.05);
+    border: 1px #9D9D9D solid;
+    border-radius: 30px;
+
+    margin: 50px auto; 
+    padding: 70px;
+    text-align: left; 
+}
+
+.regis_container h2{
+    font-size: 60px;
+    margin: 0;
+}
+
+.regis_container h5{
+    font-size: 15px;
+    margin: 0;
+    color: #D9D9D9;
+}
+
+.regis_container h5 a{
+    color: #734EBF;
+    text-decoration: none;
+}
+
+.regis_container form {
+    align-items: center;
+    margin-top: 30px;
+    padding: 10px 50px;
+}
+
+.regis_container form label {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.regis_container form .row {
+    align-items: center;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items at the start of the cross axis */
+    margin-bottom: 15px; /* margin between rows */
+}
+
+.input-group {
+    width: 48%;
+    position: relative;
+}
+
+.input-group .error-message {
+    position: absolute;
+    top: 100%; /* Position it just below the input field */
+    left: 0;
+    color: red;
+    display: none;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    border: 2px solid #734EBF;
+    border-radius: 15px;
+    background-color: #2B1D5A;
+    color: #ffffff;
+    box-sizing: border-box; 
+}
+
+/* REGISTER BUTTON */
+.button-container input[type=submit] {
+    width: 150px;
+    height: 40px;
+    background: linear-gradient(92deg, rgba(115, 78, 191, 0.75) 0%, rgba(72, 44, 244, 0.75) 100%);
+    border: 3px solid transparent;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 15px; 
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.button-container input[type=submit]:hover {
+    background: linear-gradient(92deg, rgba(115, 78, 191, 1) 0%, rgba(72, 44, 244, 1) 100%);
+}
+
+.button-container {
+    width: 100%; 
+    padding: 20px 0;
+    text-align: right; /* Align button to the right */
+}
+
+
+/* ACCESS BUTTON */
+.access-options {
+    display: flex;
+    padding: 30px 0;
+    justify-content: space-between;
+}
+
+.access-option {
+    background-color: transparent;
+    color: #fff;
+    width: 80%;
+    border: 3px solid transparent;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 0 40px 0;
+    padding: 30px 0;
+
+    transition: box-shadow 0.3s; /* Smooth transition for box-shadow */
+    border-radius: 15px; 
+    overflow: hidden; 
+
+}
+
+.access-option.buy-services{
+    margin-right: 15px;
+}
+
+.access-option.provide-services{
+    margin-left: 15px;
+}
+
+.access-option:hover {
+    box-shadow: 0 0 15px #734EBF, 0 0 20px #734EBF, 0 0 35px #734EBF, 0 0 20px #734EBF; /* Change glow color on hover */
+}
+
+.access-option.buy-services:hover {
+    background-color: #734EBF; 
+}
+
+.access-option.provide-services:hover {
+    background-color: #734EBF; 
+}
+
+@keyframes neon-glow {
+    to {
+        box-shadow: 0 0 10px #734EBF, 0 0 20px #734EBF, 0 0 30px #734EBF, 0 0 40px #734EBF;
+    }
+}
+
+.access-option.active.buy-services {
+    background-color: #734EBF; /* Set the background color for active button */
+    box-shadow: 0 0 15px #734EBF, 0 0 20px #734EBF, 0 0 35px #734EBF, 0 0 20px #734EBF; /* Apply the same box-shadow as hover */
+}
+
+.access-option.active.provide-services {
+    background-color: #734EBF; /* Set the background color for active button */
+    box-shadow: 0 0 15px #734EBF, 0 0 20px #734EBF, 0 0 35px #734EBF, 0 0 20px #734EBF; /* Apply the same box-shadow as hover */
+}
+
+
+hr{
+    height:5px;
+    border-width:0;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+}
+
+.reminder{
+    font-weight: 500;
+    font-size: 17px;
+}
+.reminder,
+.reminder-subtext {
+    text-align: center;
+    color: white;
+}
+
+.reminder i, .reminder b {
+    color: white; /* Override italic and bold elements color */
+}
+
+.reminder-subtext {
+    font-family: 'Karla', sans-serif;
+    padding: 10px;
+    font-size: 15px;
+    opacity: 0.7; /* Lower opacity for subtext */
+    font-style: italic;
+}
