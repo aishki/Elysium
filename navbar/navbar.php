@@ -9,6 +9,8 @@
     <div class="logo">
         <img src="../../Assets/logo.png" alt="Logo">  
     </div>
+
+    <!-- dfgdfg -->
     
     <div class="nav-links">
         <a href="../../Home/default/home.php" class="nav-item <?php echo ($current_page == 'home.php') ? 'login' : ''; ?>">Home</a>
