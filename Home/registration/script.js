@@ -1,126 +1,102 @@
-//parallax effect
-window.addEventListener('scroll', function() {
-    var yPos = -window.scrollY / 2;
-    var bg = document.querySelector('body');
-    bg.style.backgroundPositionY = yPos + 'px';
-});
-
-
 function setupEventListeners() {
     // Access buttons
     const buyServicesBtn = document.getElementById('buyServicesBtn');
     const provideServicesBtn = document.getElementById('provideServicesBtn');
+    const hideContainer = document.getElementById("hide_container");
+
+    hideContainer.style.display = "none";
 
     buyServicesBtn.addEventListener('click', function() {
+        setAccountType("Employer Account");
+        toggleFormSections(true);
+
+        hideContainer.style.display = "block"; // Show the reminder
         buyServicesBtn.classList.add('active');
         provideServicesBtn.classList.remove('active');
     });
 
     provideServicesBtn.addEventListener('click', function() {
-        provideServicesBtn.classList.add('active');
-        buyServicesBtn.classList.remove('active');
+        setAccountType("Applicant Account");
+        toggleFormSections(false);
+
+        hideContainer.style.display = "block"; // Show the reminder
+        buyServicesBtn.classList.remove("active");
+        provideServicesBtn.classList.add("active");
+    });
+
+    // Access the Submit button
+    const submitButton = document.getElementById('submitButton');
+
+    // Add event listener to the Submit button
+    submitButton.addEventListener('click', function(event) {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+
+        // Check if a radio button is selected
+        var companyRadio = document.getElementById('typ_comp');
+        var personalRadio = document.getElementById('typ_pers');
+        
+        if (!companyRadio.checked && !personalRadio.checked) {
+            // If neither radio button is checked, prevent form submission
+            alert('Please select an account type.');
+            return; // Return to stop further execution
+        }
+
+        // Check if form validation passes
+        if (!validateForm()) {
+            // If validation fails, display the alert and prevent form submission
+            alert('Please make sure all fields are filled correctly.');
+            return; // Return to stop further execution
+        }
+
+        // If validation passes and a radio button is selected, submit the form
+        document.getElementById('registrationForm').submit();
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-    setupEventListeners(); // Call the function to set up event listeners
-    // Get the form fields for applicant
-    var educField = document.getElementById('educ');
-    var genderField = document.getElementById('gender');
-    var maritalStatField = document.getElementById('marital_stat');
-    var DOBField = document.getElementById('DOB');
-    var ageField = document.getElementById('age');
-    var addLineField = document.getElementById('addLine');
-    var brgyField = document.getElementById('brgy');
-    var cityField = document.getElementById('city');
-    var provinceField = document.getElementById('province');
+function setAccountType(type) {
+    document.getElementById("accountType").textContent = type;
+}
 
-    // Get the form fields for Employer
-    var companyField = document.getElementById('company');
-    var occupationField = document.getElementById('occupation');
-    var clientAddLineField = document.getElementById('client_addLine');
-    var clientBrgyField = document.getElementById('client_brgy');
-    var clientCityField = document.getElementById('client_city');
-    var clientProvinceField = document.getElementById('client_province');
-
-    const buyServicesBtn = document.getElementById("buyServicesBtn");
-    const provideServicesBtn = document.getElementById("provideServicesBtn");
-
+function toggleFormSections(isEmployer) {
     const employerSection = document.getElementById("employerSection");
     const applicantSection = document.getElementById("applicantSection");
+    const companyType = document.querySelector('.company_type');
+    const personalType = document.querySelector('.personal_type');
+    const companyRadio = document.getElementById('typ_comp');
+    const personalRadio = document.getElementById('typ_pers');
 
-    const hideContainer = document.getElementById("hide_container");
-    const accountTypeText = document.getElementById("accountType");
 
-    hideContainer.style.display ="none";
+    if (isEmployer) {
+        employerSection.style.display = "block";
+        applicantSection.style.display = "none";
+        setRequiredAttributes(["company", "occupation", "client_addLine", "client_brgy", "client_city", "client_province"], true);
+        setRequiredAttributes(["educ", "gender", "marital_stat", "DOB", "age", "addLine", "brgy", "city", "province"], false);
+    } else {
+        employerSection.style.display = "none";
+        applicantSection.style.display = "block";
+        setRequiredAttributes(["company", "occupation", "client_addLine", "client_brgy", "client_city", "client_province"], false);
+        setRequiredAttributes(["educ", "gender", "marital_stat", "DOB", "age", "addLine", "brgy", "city", "province"], true);
+    }
 
-    buyServicesBtn.addEventListener("click", function() {
-        accountTypeText.textContent = "Employer Account";
-        hideContainer.style.display = "block"; // Show the reminder
+    // Adjust required attributes for Employer type based on the Company or Personal radio selection
+    if (isEmployer) {
+        if (companyRadio.checked) {
+            companyType.style.display = 'block';
+            personalType.style.display = 'none';
+            setRequiredAttributes(["tin", "company1"], true);
 
-        employerSection.style.display = "block"; // Show the employer section
-        applicantSection.style.display = "none"; // Hide the applicant section
-    
-                // Set required attribute for Employer fields
-                companyField.required = true;
-                occupationField.required = true;
-                clientAddLineField.required = true;
-                clientBrgyField.required = true;
-                clientCityField.required = true;
-                clientProvinceField.required = true;
-        
-                // Clear required attribute from applicant fields
-                educField.required = false;
-                genderField.required = false;
-                maritalStatField.required = false;
-                DOBField.required = false;
-                ageField.required = false;
-                addLineField.required = false;
-                brgyField.required = false;
-                cityField.required = false;
-                provinceField.required = false;
-    });
-
-    provideServicesBtn.addEventListener("click", function() {
-        accountTypeText.textContent = "Applicant Account";
-        hideContainer.style.display = "block"; // Show the reminder
-
-        applicantSection.style.display = "block"; // Show the applicant section
-        employerSection.style.display = "none"; // Hide the employer section
-    
-        // Input equired attribute from applicant fields
-        educField.required = true;
-        genderField.required = true;
-        maritalStatField.required = true;
-        DOBField.required = true;
-        ageField.required = true;
-        addLineField.required = true;
-        brgyField.required = true;
-        cityField.required = true;
-        provinceField.required = true;
-
-        // Clear required attribute from Employer fields
-        companyField.required = false;
-        occupationField.required = false;
-        clientAddLineField.required = false;
-        clientBrgyField.required = false;
-        clientCityField.required = false;
-        clientProvinceField.required = false;
-    });
-});
-
-function setAccess(buttonId) {
-    // Set the value of the hidden input field to the ID of the clicked button
-    document.getElementById('access').value = buttonId;
-
-    //visual feedback
-    const buttons = document.querySelectorAll('.access-option');
-    buttons.forEach(function(button) {
-        if (button.id === buttonId) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
+        } else if (personalRadio.checked){
+            companyType.style.display = 'none';
+            personalType.style.display = 'block';
+            setRequiredAttributes(["tin", "company1"], false);
         }
+    }
+}
+
+function setRequiredAttributes(ids, required) {
+    ids.forEach(function(id) {
+        document.getElementById(id).required = required;
     });
 }
 
@@ -136,6 +112,10 @@ function validateForm() {
         return false; // Passwords don't match, prevent form submission
     } else {
         errorDiv.style.display = "none";
-        return true; // Passwords match, allow form submission
+        return true; // Passwords match, form submission allowed
     }
 }
+
+document.addEventListener("DOMContentLoaded", function() {
+    setupEventListeners(); // Call the function to set up event listeners
+});

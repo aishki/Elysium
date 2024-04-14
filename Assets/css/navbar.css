@@ -8,22 +8,33 @@ body {
     align-items: center;
     justify-content: space-between;
     /* background: linear-gradient(180deg, #120E25 34%, rgba(18, 14, 37, 0) 100%); */
-    background-color: #4d24a1;
+    /* background-color: #4d24a1; */
+    background-color: transparent;
+    /* backdrop-filter: blur(4px); */
+    /* background: rgb(50,23,77); */
     color: rgb(18, 14, 37);
-    padding: 20px 50px;
-
-    position: sticky;
+    padding: 20px 0;
+    margin-bottom: 96px;
+    position: fixed;
+    width: 100%;
     top: 0;
     left: 0;
     z-index: 1000; /* Ensure the navbar appears above other content */
 }
+.navbar.scrolled {
+    background-color: #130e35; /* Change to your desired background color */
+    transition: background-color 200ms ease-in-out;
+    top: 0;
+}
 
 .logo img {
     width: 50px;
+    padding-left: 50px;
 }
 
 .nav-links {
     display: flex;
+    padding-right: 50px;
 }
 
 .nav-item {

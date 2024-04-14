@@ -87,9 +87,10 @@ class RegistrationController {
         $barangay     = $_POST['client_brgy'];
         $city         = $_POST['client_city'];
         $province     = $_POST['client_province'];
+        $employerType = $_POST['account_type'];
 
         // Insert employer info
-        $databaseModel->insertEmployerInfo($firstname, $lastname, $email, $contactNumber, $password, $access, $organization, $occupation, $addressLine, $barangay, $city, $province);
+        $databaseModel->insertEmployerInfo($firstname, $lastname, $email, $contactNumber, $password, $access, $organization, $occupation, $addressLine, $barangay, $city, $province, $employerType);
     }
 
     private function insertapplicantInfo($databaseModel, $firstname, $lastname, $email, $contactNumber, $password, $access) {

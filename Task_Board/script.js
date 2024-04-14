@@ -16,7 +16,7 @@ $(document).ready(function() {
         console.log('User Rank:', userRank);
 
         // Get job rank
-        var jobRank = $(this).closest('.jobContainer').find('.right-data .data:first').text().trim();
+        var jobRank = $(this).closest('.jobContainer').find('.t-data .data:first').text().trim();
         console.log('Job Rank:', jobRank);
 
 

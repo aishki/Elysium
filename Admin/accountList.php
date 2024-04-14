@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="../Assets/navbar/navbar.css">
-    <link rel="stylesheet" href="../Home/css/gen_info.css">
+    <link rel="stylesheet" href="../Home/css/gen.css">
     <link rel="stylesheet" href="../Admin/accountList.css">
 </head>
 <body>

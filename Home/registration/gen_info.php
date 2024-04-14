@@ -17,7 +17,7 @@ if (isset($_SESSION['user_info'])) {
     
     <title>Registration Page</title>
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
-    <link rel="stylesheet" href="../../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../../Assets/css/gen.css">
 </head>
 
 <body class="default">

@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_info'])) {
 }
 
 // Retrieve user information from session
-$currentEmail = $_SESSION['user_info']['email'];
+$currentName = $_SESSION['user_info']['first_name'];
 $access = $_SESSION['user_info']['user_type'];
 ?>
 
@@ -18,17 +18,26 @@ $access = $_SESSION['user_info']['user_type'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="../../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../../Assets/css/gen.css">
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
+    <link rel="stylesheet" href="../../Assets/css/home.css">
 </head>
 
 <body class="default">
     <?php include '../../navbar/navbar.php'; ?>
 
-    <p>You have logged in successfully</p>
-    <p>Welcome, <?php echo $currentEmail; ?></p>
-    <p>Your access level is: <?php echo $access; ?></p>
+    <div class = "part">
+            <p>Welcome, <?php echo $currentName; ?> to</p>
+            <h1>Elysium</h1>
 
+            <p>Your access level is: <?php echo $access; ?></p>
+    </div>
     
+    <div class = "part">
+            <p>Welcome, <?php echo $currentName; ?> to</p>
+            <h1>Elysium</h1>
+
+            <p>Your access level is: <?php echo $access; ?></p>
+    </div>
 </body>
 </html>

@@ -17,7 +17,7 @@ if (isset($_SESSION['user_info'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log-In Page</title>
     <link rel="stylesheet" href="../../Assets/css/log_in.css">
-    <link rel="stylesheet" href="../../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../../Assets/css/gen.css">
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
 </head>
 

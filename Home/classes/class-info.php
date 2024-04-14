@@ -69,19 +69,22 @@ class DatabaseModel {
                                        $password    , $access, 
                                        $organization, $occupation, 
                                        $addressLine , $barangay, 
-                                       $city        , $province) {
+                                       $city        , $province,
+                                       $employerType) {
                                        $stmt = $this->conn->prepare("INSERT INTO employer (client_fname       , client_lname, 
                                                                                            client_email       , client_contact, 
                                                                                            client_pwd         , access, 
                                                                                            client_organization, client_occupation, 
                                                                                            client_addressLine , client_barangay, 
-                                                                                           client_city        , client_province) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                       $stmt->bind_param("ssssssssssss", $firstname   , $lastname, 
+                                                                                           client_city        , client_province,
+                                                                                           account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                       $stmt->bind_param("sssssssssssss", $firstname   , $lastname, 
                                                                          $email       , $contactNumber, 
                                                                          $password    , $access, 
                                                                          $organization, $occupation, 
                                                                          $addressLine , $barangay, 
-                                                                         $city        , $province);
+                                                                         $city        , $province,
+                                                                         $employerType);
                                        $stmt->execute();
                                        $stmt->close();
                                    }

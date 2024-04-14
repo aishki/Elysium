@@ -80,22 +80,22 @@
     font-weight: 700;
 }
 
-.left-data .data{
+.employer-details .data{
     font-size: 20px;
     font-weight: 500;
 }
 
-.right-data .data{
+.t-data .data{
     font-size: 20px;
     font-weight: 700;
 }
 
-.left-data .label{
+.employer-details .label{
     font-weight: 700;
     font-style: italic;
 }
 
-.right-data .label{
+.t-data .label{
     margin-bottom: 20px;
     font-style: italic;
 }

@@ -62,7 +62,7 @@ if (!isset($_SESSION['user_info'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin > Selected Profile</title>
-    <link rel="stylesheet" href="../../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../../Assets/css/gen.css">
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
     <link rel="stylesheet" href="../../Assets/css/profile.css">
     <link href="https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap" rel="stylesheet">

@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
-    <link rel="stylesheet" href="../../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../../Assets/css/gen.css">
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
     <link rel="stylesheet" href="../../Assets/css/profile.css">
     <link rel="stylesheet" href="../../Assets/css/job_list.css">

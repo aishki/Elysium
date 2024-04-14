@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
     <link rel="stylesheet" href="../Assets/css/navbar.css">
-    <link rel="stylesheet" href="../Assets/css/gen_info.css">
+    <link rel="stylesheet" href="../Assets/css/gen.css">
     <link rel="stylesheet" href="../Assets/css/accountList.css">
 
 </head>

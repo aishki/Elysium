@@ -21,7 +21,8 @@ label,input{
     border: 1px #9D9D9D solid;
     border-radius: 30px;
 
-    margin: 50px auto; 
+    
+    margin: 96px auto 50px auto; 
     padding: 70px;
     text-align: left; 
 }
@@ -60,7 +61,6 @@ label,input{
 .row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Align items at the start of the cross axis */
     margin-bottom: 15px; /* margin between rows */
 }
 
@@ -208,3 +208,212 @@ hr{
     opacity: 0.7; /* Lower opacity for subtext */
     font-style: italic;
 }
+
+.radio-inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 350px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  .radio-inputs > * {
+    margin: 6px;
+  }
+  
+  .radio-input:checked + .radio-tile {
+    border-color: #2260ff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: #2260ff;
+  }
+  
+  .radio-input:checked + .radio-tile:before {
+    transform: scale(1);
+    opacity: 1;
+    background-color: #2260ff;
+    border-color: #2260ff;
+  }
+  
+  .radio-input:checked + .radio-tile .radio-icon svg {
+    fill: #2260ff;
+  }
+  
+  .radio-input:checked + .radio-tile .radio-label {
+    color: #2260ff;
+  }
+  
+  .radio-input:focus + .radio-tile {
+    border-color: #2260ff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
+  }
+  
+  .radio-input:focus + .radio-tile:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    min-height: 80px;
+    border-radius: 0.5rem;
+    border: 2px solid #b5bfd9;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.15s ease;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .radio-tile:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid #b5bfd9;
+    background-color: #fff;
+    border-radius: 50%;
+    top: 0.25rem;
+    left: 0.25rem;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.25s ease;
+  }
+  
+  .radio-tile:hover {
+    border-color: #2260ff;
+  }
+  
+  .radio-tile:hover:before {
+    transform: scale(1);
+    opacity: 1;
+  }
+  
+  .radio-icon svg {
+    width: 2rem;
+    height: 2rem;
+    fill: #494949;
+  }
+  
+  .radio-label {
+    color: #707070;
+    transition: 0.375s ease;
+    text-align: center;
+    font-size: 13px;
+  }
+  
+  .radio-input {
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(100%);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .checkBtn {
+    width: 200px;
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: #ffedd3;
+    text-transform: uppercase;
+    position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  .checkBtn::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #ffc506;
+    transition: 0.5s ease;
+  }
+  
+  .checkBtn:hover {
+    color: #1e1e2b;
+    
+    transition-delay: 0.5s;
+  }
+  
+  .checkBtn:hover::before {
+    width: calc(100% - 20px);
+  }
+  
+  .checkBtn::after {
+    content: "";
+    position: absolute;
+    border-radius:10px;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #ffc506;
+    transition: 0.4s ease;
+    z-index: -1;
+  }
+  
+  .checkBtn:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+  }
+  
+
+  /* File Upload */
+  .file-upload-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .file-upload-label input {
+    display: none;
+  }
+  .file-upload-label svg {
+    height: 30px;
+    fill: rgb(82, 82, 82);
+    margin-bottom: 20px;
+  }
+  .file-upload-label {
+    cursor: pointer;
+    background-color: transparent;
+    padding: 30px 70px;
+    border-radius: 40px;
+    border: 2px dashed rgb(82, 82, 82);
+    box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
+  }
+  .file-upload-design {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .browse-button {
+    background-color: rgb(82, 82, 82);
+    padding: 5px 15px;
+    border-radius: 10px;
+    color: white;
+    transition: all 0.3s;
+  }
+  .browse-button:hover {
+    background-color: rgb(14, 14, 14);
+  }
+  

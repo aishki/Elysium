@@ -34,7 +34,7 @@ if ($applicationDetails->num_rows > 0) {
 
 
                 <div class= "row">
-                    <div class="left-data">
+                    <div class="employer-details">
                         <!-- Name of Employer -->
                         <p class= "data">' . $row["client_fname"] . " " . $row["client_lname"] .'</p>
                         <p class= "label">Employer </p>
@@ -52,7 +52,7 @@ if ($applicationDetails->num_rows > 0) {
 
                     </div>
                     
-                    <div class="right-data">
+                    <div class="t-data">
                         <div class= "statusContainer">
                             <h4 class= "status">' . $row["application_status"] . '</h4>
                             <p class= "label">Status </p>
