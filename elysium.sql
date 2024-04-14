@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 08:35 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Apr 14, 2024 at 04:07 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -128,20 +128,23 @@ CREATE TABLE `employer` (
   `client_addressLine` varchar(180) NOT NULL,
   `client_barangay` varchar(180) NOT NULL,
   `client_city` varchar(180) NOT NULL,
-  `client_province` varchar(180) NOT NULL
+  `client_province` varchar(180) NOT NULL,
+  `account_type` enum('Personal','Company') NOT NULL DEFAULT 'Personal',
+  `status` enum('Accredited','Not Accredited') NOT NULL DEFAULT 'Not Accredited'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employer`
 --
 
-INSERT INTO `employer` (`client_ID`, `client_fname`, `client_lname`, `client_email`, `client_contact`, `client_pwd`, `access`, `client_organization`, `client_occupation`, `client_addressLine`, `client_barangay`, `client_city`, `client_province`) VALUES
-(28, 'Arielle', 'Jimera', 'crypticdystopian@gmail.com', '09786457846', 'aaa', 'Employer', 'BDO', 'Software Developer', 'Avida Parkway', 'Nuvali', 'Laguna', 'Metro Manila'),
-(29, 'Aishki', 'Daiteru', 'ad@gmail.com', '09567345345', 'abc', 'Employer', 'World Trade Organization', 'Pirate', '928, Marikina St.', 'Brgy. 15', 'Buenos', 'Spain'),
-(30, 'Tuesday', 'Simmons', 'tusdaysimmons@gmail.com', '09455111105', 'abc', 'Employer', 'Dystopia', 'Engr', '111B, Duhat St.', 'Las Piñas', 'Las Piñas', 'Metro Manila'),
-(32, 'Aqua', 'Black', 'aquablack@gmail.com', '09455111105', 'abc', 'Employer', 'ABC Corporation', 'CEO', '123 Main Street', 'Cityville', 'Texas', 'North Carolina'),
-(33, 'Lizbeth', 'Jimera', 'aaaa@gmail.com', '09455111105', 'a', 'Employer', 'for Personal Errands', 'Housewife', 'Unit 6, Zeta St., Brgy. Estefania', 'Bacolod City', 'Bacolod City', 'Negros Occidental'),
-(47, 'Dairin', 'Jaganap', 'dj@gmail.com', '09678567233', 'abcd', 'Employer', 'University of St. La Salle', 'Developer/Professor', '289 Ave St.,', 'Mansilingan', 'Bacolod City', 'Negros Occidental');
+INSERT INTO `employer` (`client_ID`, `client_fname`, `client_lname`, `client_email`, `client_contact`, `client_pwd`, `access`, `client_organization`, `client_occupation`, `client_addressLine`, `client_barangay`, `client_city`, `client_province`, `account_type`, `status`) VALUES
+(28, 'Arielle', 'Jimera', 'crypticdystopian@gmail.com', '09786457846', 'aaa', 'Employer', 'BDO', 'Software Developer', 'Avida Parkway', 'Nuvali', 'Laguna', 'Metro Manila', 'Personal', 'Not Accredited'),
+(29, 'Aishki', 'Daiteru', 'ad@gmail.com', '09567345345', 'abc', 'Employer', 'World Trade Organization', 'Pirate', '928, Marikina St.', 'Brgy. 15', 'Buenos', 'Spain', 'Personal', 'Not Accredited'),
+(30, 'Tuesday', 'Simmons', 'tusdaysimmons@gmail.com', '09455111105', 'abc', 'Employer', 'Dystopia', 'Engr', '111B, Duhat St.', 'Las Piñas', 'Las Piñas', 'Metro Manila', 'Personal', 'Not Accredited'),
+(32, 'Aqua', 'Black', 'aquablack@gmail.com', '09455111105', 'abc', 'Employer', 'ABC Corporation', 'CEO', '123 Main Street', 'Cityville', 'Texas', 'North Carolina', 'Personal', 'Not Accredited'),
+(33, 'Lizbeth', 'Jimera', 'aaaa@gmail.com', '09455111105', 'a', 'Employer', 'for Personal Errands', 'Housewife', 'Unit 6, Zeta St., Brgy. Estefania', 'Bacolod City', 'Bacolod City', 'Negros Occidental', 'Personal', 'Not Accredited'),
+(47, 'Dairin', 'Jaganap', 'dj@gmail.com', '09678567233', 'abcd', 'Employer', 'University of St. La Salle', 'Developer/Professor', '289 Ave St.,', 'Mansilingan', 'Bacolod City', 'Negros Occidental', 'Personal', 'Not Accredited'),
+(57, '', '', '', '', '', 'Employer', '', '', '', '', '', '', '', 'Not Accredited');
 
 -- --------------------------------------------------------
 
@@ -169,7 +172,8 @@ CREATE TABLE `job` (
 INSERT INTO `job` (`job_ID`, `client_ID`, `remuneration`, `jobName`, `jobDescription`, `dateAdded`, `job_rank`, `deadline`, `job_status`, `dateCompleted`) VALUES
 (29, 29, 5000.00, 'Pet Sitting', 'Taking care of a pet while the owner is away, including feeding, walking, and playing.', '2024-03-11', 'B', '2024-03-22', 'Pending', NULL),
 (30, 30, 8000.00, 'Data Entry', ' Entering customer information into a database system.', '2024-03-11', 'B', '2024-04-02', 'Pending', NULL),
-(35, 28, 2000.00, ' Clean the House', 'Perform general cleaning tasks in the house.', '2024-03-13', 'C', '2024-03-23', 'Not Completed', NULL);
+(35, 28, 2000.00, ' Clean the House', 'Perform general cleaning tasks in the house.', '2024-03-13', 'C', '2024-03-23', 'Not Completed', NULL),
+(36, 28, 1000000.00, 'Double Suicide', 'kms', '2024-04-08', 'S', '2024-04-30', 'Not Completed', NULL);
 
 -- --------------------------------------------------------
 
@@ -266,13 +270,13 @@ ALTER TABLE `applications_list`
 -- AUTO_INCREMENT for table `employer`
 --
 ALTER TABLE `employer`
-  MODIFY `client_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `client_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `job`
 --
 ALTER TABLE `job`
-  MODIFY `job_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `job_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `petition`
