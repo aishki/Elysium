@@ -4,132 +4,241 @@ body.default{
     background-attachment: fixed; /* Fixed background */
     background-position: center; /* Center the background image horizontally and vertically */
     color: #F4FAFF;
+
 }
 
-label,input{
-    display: block;
+.cntr{
+  display: flex;
+  flex-direction: column;
+  margin: 100px auto 50px auto; 
+  height: 100vh;
+  width: auto;
+  align-items: center;
 }
 
-.empty_label{
-    visibility: hidden;
+.hdr{
+  width: 80%;
+  margin-bottom: 20px;
 }
 
+.h2title{
+  font-size: 40px;
+  margin: 0;
+}
+
+.h5sub{
+  font-size: 15px;
+  margin: 0;
+  color: #D9D9D9;
+}
+
+.h5sub a{
+  color: #734EBF;
+  text-decoration: none;
+}
+
+/* Box Form */
 .regis_container {
-    width: 50%;
-    height: 100%;
+    width: 80%;
     background: rgba(217, 217, 217, 0.05);
-    border: 1px #9D9D9D solid;
+    /* border: 1px #9D9D9D solid; */
     border-radius: 30px;
 
-    
-    margin: 96px auto 50px auto; 
-    padding: 70px;
     text-align: left; 
+    display: flex;
 }
 
-.regis_container h2{
-    font-size: 60px;
-    margin: 0;
+.r-left-nav{
+  width: 300px;
 }
 
-.regis_container h5{
-    font-size: 15px;
-    margin: 0;
-    color: #D9D9D9;
+/* Buttons for Left Nav */
+.r-stage{
+  margin: 65px 30px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
+  .stage {
+      background-color: transparent;
+      border: none;
+      padding: 15px;
+      color: white;
+      display: flex;
+      position: relative;
+      margin-bottom: 15px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-size: 15px;
+  }
+      .stage:not(.active):hover,
+      .stage:focus {
+          background: rgba(157, 132, 205, 0.8);
+          color: black;
+      }
+      .stage:focus,
+      .stage.active {
+          background-color: rgb(115,78,191);
+          outline: none;
+      }
+      .stage::before {
+          content: "";
+          position: absolute;
+          top: 5px;
+          left: -10px;
+          width: 5px;
+          height: 80%;
+          background-color:  rgb(115,78,191);
+          border-radius: 5px;
+          opacity: 0;
+      }
+      .stage:focus::before,
+      .stage.active::before {
+          opacity: 1;
+      }
 
-.regis_container h5 a{
-    color: #734EBF;
-    text-decoration: none;
-}
+  /* Hide buttons with the "hidden" class */
+  .stage.hidden {
+    display: none;
+  }
+  
+/* End Left-Nav */
 
+
+/* Right Side */
 .regis_container form {
     align-items: center;
-    margin-top: 30px;
+    margin: 30px 0;
     padding: 10px 50px;
+    width: 80%;
 }
 
-.regis_container form label {
-    margin-bottom: 10px;
-    font-size: 12px;
+.hide{
+  display: flex;
+  
 }
 
-.regis_container form .row {
-    align-items: center;
+/* Next Button */
+.n_container, .s_container{
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
 }
 
-.row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px; /* margin between rows */
+.n_button, .s_button {
+  position: relative;
+  padding: 12px 50px;
+  border-radius: 6px;
+
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #7d2ae8;
+  transition: all 0.2s ease;
 }
 
-.input-group {
-    width: 48%;
-    position: relative;
+.n_button:active, .s_button:active {
+  transform: scale(0.96);
 }
 
-.input-group .error-message {
-    position: absolute;
-    top: 100%; /* Position it just below the input field */
-    left: 0;
-    color: red;
-    display: none;
+.n_button:before,
+.n_button:after, .s_button:before, .s_button:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
+.n_button:hover:before, .s_button:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
 }
 
-.input-group input {
-    width: 100%;
-    height: 40px;
-    padding: 15px;
-    border: 2px solid #734EBF;
-    border-radius: 15px;
-    background-color: #2B1D5A;
-    color: #ffffff;
-    box-sizing: border-box; 
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
 }
 
-/* REGISTER BUTTON */
-.button-container input[type=submit] {
-    width: 150px;
-    height: 40px;
-    background: linear-gradient(92deg, rgba(115, 78, 191, 0.75) 0%, rgba(72, 44, 244, 0.75) 100%);
-    border: 3px solid transparent;
-    border-radius: 30px;
-    color: #ffffff;
-    font-size: 15px; 
-    font-weight: bold;
-    cursor: pointer;
-    outline: none;
+.n_button:hover::after, .s_button:hover:after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
 }
 
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
 
-.button-container input[type=submit]:hover {
-    background: linear-gradient(92deg, rgba(115, 78, 191, 1) 0%, rgba(72, 44, 244, 1) 100%);
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
 }
-
-.button-container {
-    width: 100%; 
-    padding: 20px 0;
-    text-align: right; /* Align button to the right */
-}
+/* End Next Button */
 
 
+/* Account Type */
 /* ACCESS BUTTON */
 .access-options {
     display: flex;
     padding: 30px 0;
-    justify-content: space-between;
+    gap: 30px;
+    justify-content: center;
 }
 
 .access-option {
     background-color: transparent;
     color: #fff;
-    width: 80%;
+    width: 300px;
+    height: 150px;
     border: 3px solid transparent;
     font-size: 16px;
     font-weight: bold;
@@ -141,7 +250,19 @@ label,input{
     border-radius: 15px; 
     overflow: hidden; 
 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
+
+.access-option svg{
+  width: 40px;
+  height: 40px;
+  padding: 10px;
+  opacity: '0';
+}
+
 
 .access-option.buy-services{
     margin-right: 15px;
@@ -179,8 +300,7 @@ label,input{
     box-shadow: 0 0 15px #734EBF, 0 0 20px #734EBF, 0 0 35px #734EBF, 0 0 20px #734EBF; /* Apply the same box-shadow as hover */
 }
 
-
-hr{
+hr .divider{
     height:5px;
     border-width:0;
     background-color: rgba(255, 255, 255, 0.5);
@@ -209,211 +329,452 @@ hr{
     font-style: italic;
 }
 
-.radio-inputs {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 350px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
+/* End Account Type */
+
+/* Employer Details */
+/*  */
+/* End Employer Details */
+
+.comp_deets, .pers_deets{
+  margin-top: 70px;
+}
+
+/* Check Tin Button */
+.checkBtn {
+  width: 200px;
+  font-size: 12px;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: #ffedd3;
+  text-transform: uppercase;
+  position: relative;
+  transition: 0.5s ease;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.checkBtn::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #ffc506;
+  transition: 0.5s ease;
+}
+
+.checkBtn:hover {
+  color: #1e1e2b;
   
-  .radio-inputs > * {
-    margin: 6px;
-  }
-  
-  .radio-input:checked + .radio-tile {
-    border-color: #2260ff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    color: #2260ff;
-  }
-  
-  .radio-input:checked + .radio-tile:before {
-    transform: scale(1);
-    opacity: 1;
-    background-color: #2260ff;
-    border-color: #2260ff;
-  }
-  
-  .radio-input:checked + .radio-tile .radio-icon svg {
-    fill: #2260ff;
-  }
-  
-  .radio-input:checked + .radio-tile .radio-label {
-    color: #2260ff;
-  }
-  
-  .radio-input:focus + .radio-tile {
-    border-color: #2260ff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1), 0 0 0 4px #b5c9fc;
-  }
-  
-  .radio-input:focus + .radio-tile:before {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
-  .radio-tile {
+  transition-delay: 0.5s;
+}
+
+.checkBtn:hover::before {
+  width: calc(100% - 20px);
+}
+
+.checkBtn::after {
+  content: "";
+  position: absolute;
+  border-radius:10px;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #ffc506;
+  transition: 0.4s ease;
+  z-index: -1;
+}
+
+.checkBtn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}
+
+/* Employer Personal Details */
+
+
+/* Inputs, Labels */
+.hrStg{
+  background-color: #F4FAFF;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.stage-div{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.regis_container form {
+  align-items: center;
+  margin-top: 30px;
+  padding: 10px 50px;
+}
+
+.regis_container .input-group label, .lm {
+  margin-bottom: 10px;
+  font-size: 12px;
+  display: inline-block;
+}
+
+.regis_container form .row {
+  align-items: center;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px; /* margin between rows */
+  gap: 20px;
+}
+
+.input-group {
+  width: 100%;
+  position: relative;
+}
+
+.input-group .error-message {
+  position: absolute;
+  top: 100%; /* Position it just below the input field */
+  right: 0;
+  color: red;
+  display: none;
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input-group input {
+  width: 100%;
+  height: 40px;
+  padding: 15px;
+  border: 2px solid #734EBF;
+  border-radius: 15px;
+  background-color: #2B1D5A;
+  color: #ffffff;
+  box-sizing: border-box; 
+}
+
+
+/* Applicant CSS*/
+
+/* Select Base CSS */
+.select {
+  font-size: 12px;
+  /* margin-right: 10px; */
+  cursor: pointer;
+  position: relative;
+  transition: 300ms;
+  color: white;
+  /* overflow: hidden; */
+  width: 100%;
+}
+
+.selectedOption {
+  margin-bottom: 3px;
+  position: relative;
+  z-index: 100000;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 40px;
+  padding: 15px;
+  border: 2px solid #734EBF;
+  border-radius: 15px;
+  background-color: #2B1D5A;
+  color: #ffffff;
+  box-sizing: border-box; 
+}
+
+.arrow {
+  position: relative;
+  right: 0px;
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 25px;
+  fill: black;
+  z-index: 100000;
+  transition: 300ms;
+}
+
+.options {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    min-height: 80px;
-    border-radius: 0.5rem;
-    border: 2px solid #b5bfd9;
-    background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    transition: 0.15s ease;
-    cursor: pointer;
-    position: relative;
-  }
-  
-  .radio-tile:before {
-    content: "";
+    /* border-radius: 10px; */
     position: absolute;
-    display: block;
-    width: 0.75rem;
-    height: 0.75rem;
-    border: 2px solid #b5bfd9;
-    background-color: #fff;
-    border-radius: 50%;
-    top: 0.25rem;
-    left: 0.25rem;
-    opacity: 0;
-    transform: scale(0);
-    transition: 0.25s ease;
-  }
-  
-  .radio-tile:hover {
-    border-color: #2260ff;
-  }
-  
-  .radio-tile:hover:before {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
-  .radio-icon svg {
-    width: 2rem;
-    height: 2rem;
-    fill: #494949;
-  }
-  
-  .radio-label {
-    color: #707070;
-    transition: 0.375s ease;
-    text-align: center;
-    font-size: 13px;
-  }
-  
-  .radio-input {
-    clip: rect(0 0 0 0);
-    -webkit-clip-path: inset(100%);
-    clip-path: inset(100%);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
+    border: 2px solid #734EBF;
+    padding: 5px;
+    background-color: #2B1D5A;
+    top: 60px;
 
-  .checkBtn {
-    width: 200px;
-    font-size: 12px;
-    background: transparent;
-    border: none;
-    padding: 1em 1.5em;
-    color: #ffedd3;
-    text-transform: uppercase;
-    position: relative;
-    transition: 0.5s ease;
-    cursor: pointer;
-    align-self: flex-end;
-  }
-  
-  .checkBtn::before {
-    content: "";
-    position: absolute;
-    left: 10px;
-    bottom: 0;
-    height: 2px;
-    width: 0;
-    background-color: #ffc506;
-    transition: 0.5s ease;
-  }
-  
-  .checkBtn:hover {
-    color: #1e1e2b;
-    
-    transition-delay: 0.5s;
-  }
-  
-  .checkBtn:hover::before {
-    width: calc(100% - 20px);
-  }
-  
-  .checkBtn::after {
-    content: "";
-    position: absolute;
-    border-radius:10px;
+    z-index: 1000000;
     left: 0;
-    bottom: 0;
+    right: 0;
+    opacity: 0;
+    transition: 300ms;
     height: 0;
-    width: 100%;
-    background-color: #ffc506;
-    transition: 0.4s ease;
-    z-index: -1;
-  }
-  
-  .checkBtn:hover::after {
-    height: 100%;
-    transition-delay: 0.4s;
-    color: aliceblue;
-  }
-  
 
-  /* File Upload */
-  .file-upload-form {
-    width: fit-content;
-    height: fit-content;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .file-upload-label input {
     display: none;
-  }
-  .file-upload-label svg {
-    height: 30px;
-    fill: rgb(82, 82, 82);
-    margin-bottom: 20px;
-  }
-  .file-upload-label {
-    cursor: pointer;
-    background-color: transparent;
-    padding: 30px 70px;
-    border-radius: 40px;
-    border: 2px dashed rgb(82, 82, 82);
-    box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
-  }
-  .file-upload-design {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-  }
-  .browse-button {
-    background-color: rgb(82, 82, 82);
-    padding: 5px 15px;
-    border-radius: 10px;
-    color: white;
-    transition: all 0.3s;
-  }
-  .browse-button:hover {
-    background-color: rgb(14, 14, 14);
-  }
-  
+}
+
+.select.open .options {
+  /* When the select is open, display the options */
+  display: flex;
+
+  border-top: 0px transparent;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.select.open .selectedOption {
+  border-bottom: 0px transparent;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.select.open > .options {
+  opacity: 1;
+  top: 60px;
+  height: auto;
+}
+
+.select.open > .selectedOption .arrow {
+  transform: rotate(0deg);
+}
+
+.options div{
+  width: 100%;
+  overflow: hidden;
+}
+
+.option {
+  border-radius: 5px;
+  padding: 10px 15px;
+  transition: 300ms;
+  background-color: #2B1D5A;
+  width: 100%;
+}
+
+.option:hover {
+  background-color: #323741;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label {
+  display: inline-block;
+  margin: 0;
+}
+
+.options label::before {
+  content: attr(data-txt);
+}
+
+.options input[type="radio"]:checked + label {
+  display: none;
+}
+
+.options input[type="radio"]#name-suffix-none:checked + label {
+  display: none;
+}
+
+.options input[type="radio"]#gender-all:checked + label {
+  display: none;
+}
+
+.options input[type="radio"]#mstat-all:checked + label {
+  display: none;
+}
+
+/* Name Suffix Select */
+.name-suffix-buttons {
+  width: 200px;
+  align-self: flex-end
+}
+
+.name-suffix-buttons .selectedOption{
+  margin-bottom: 0;
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-none:checked) .selectedOption::before {
+  content: attr(data-default-suffix);
+  color: #8e8e8e;
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-jr:checked) .selectedOption::before {
+  content: attr(data-jr);
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-sr:checked) .selectedOption::before {
+  content: attr(data-sr);
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-ii:checked) .selectedOption::before {
+  content: attr(data-ii);
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-iii:checked) .selectedOption::before {
+  content: attr(data-iii);
+}
+
+.name-suffix-buttons:has(.options input[type="radio"]#name-suffix-iv:checked) .selectedOption::before {
+  content: attr(data-iv);
+}
+
+
+/* Gender Select */
+.gender-buttons:has(.options input[type="radio"]#gender-all:checked) .selectedOption::before {
+  content: attr(data-default-gender);
+  color: #8e8e8e;
+}
+
+.gender-buttons:has(.options input[type="radio"]#gender-female:checked) .selectedOption::before {
+  content: attr(data-female);
+}
+
+.gender-buttons:has(.options input[type="radio"]#gender-male:checked) .selectedOption::before {
+  content: attr(data-male);
+}
+
+.gender-buttons:has(.options input[type="radio"]#gender-non-binary:checked) .selectedOption::before {
+  content: attr(data-non-binary);
+}
+
+.gender-buttons:has(.options input[type="radio"]#gender-other:checked) .selectedOption::before {
+  content: attr(data-other-gender);
+}
+
+.gender-buttons:has(.options input[type="radio"]#gender-pns:checked) .selectedOption::before {
+  content: attr(data-pns);
+}
+
+/* End Gender Select */
+
+/* Mstat Select */
+.mstat-buttons:has(.options input[type="radio"]#mstat-all:checked) .selectedOption::before {
+  content: attr(data-default-mstat);
+  color: #8e8e8e;
+}
+
+.mstat-buttons:has(.options input[type="radio"]#mstat-married:checked) .selectedOption::before {
+  content: attr(data-married);
+}
+
+.mstat-buttons:has(.options input[type="radio"]#mstat-single:checked) .selectedOption::before {
+  content: attr(data-single);
+}
+
+.mstat-buttons:has(.options input[type="radio"]#mstat-sepdiv:checked) .selectedOption::before {
+  content: attr(data-sepdiv);
+}
+
+.mstat-buttons:has(.options input[type="radio"]#mstat-widowed:checked) .selectedOption::before {
+  content: attr(data-widowed);
+}
+
+.mstat-buttons:has(.options input[type="radio"]#mstat-other:checked) .selectedOption::before {
+  content: attr(data-other-mstat);
+}
+
+/* Educ Select */
+.edu-buttons:has(.options input[type="radio"]#edu-all:checked) .selectedOption::before {
+  content: attr(data-default-edu);
+  color: #8e8e8e;
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-elementary:checked) .selectedOption::before {
+  content: attr(data-elementary);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-highschool:checked) .selectedOption::before {
+  content: attr(data-highschool);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-vocational-undergrad:checked) .selectedOption::before {
+  content: attr(data-vocational-undergrad);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-vocational-grad:checked) .selectedOption::before {
+  content: attr(data-vocational-grad);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-college-undergrad:checked) .selectedOption::before {
+  content: attr(data-college-undergrad);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-college:checked) .selectedOption::before {
+  content: attr(data-college);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-masteral:checked) .selectedOption::before {
+  content: attr(data-masteral);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-doctorate:checked) .selectedOption::before {
+  content: attr(data-doctorate);
+}
+
+.edu-buttons:has(.options input[type="radio"]#edu-other:checked) .selectedOption::before {
+  content: attr(data-other-edu);
+}
+
+
+/* DOB Calendar to white*/
+::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* File Upload */
+.file-upload-form {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.file-upload-label input {
+  display: none;
+}
+.file-upload-label svg {
+  height: 30px;
+  fill: rgb(82, 82, 82);
+  margin-bottom: 20px;
+}
+.file-upload-label {
+  cursor: pointer;
+  background-color: transparent;
+  padding: 30px 70px;
+  border-radius: 40px;
+  border: 2px dashed rgb(82, 82, 82);
+  box-shadow: 0px 0px 200px -50px rgba(0, 0, 0, 0.719);
+}
+.file-upload-design {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.browse-button {
+  background-color: rgb(82, 82, 82);
+  padding: 5px 15px;
+  border-radius: 10px;
+  color: white;
+  transition: all 0.3s;
+}
+.browse-button:hover {
+  background-color: rgb(14, 14, 14);
+}

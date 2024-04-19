@@ -30,55 +30,54 @@ class DatabaseModel {
         return $result_applicant->num_rows > 0 || $result_employer->num_rows > 0;
     }
     
-
-
-    public function insertapplicantInfo($firstname  , $lastname, 
+    public function insertapplicantInfo($firstname , $lastname,  $suffix,
                                        $email      , $contactNumber, 
                                        $password   , $access, 
+                                       $gender     , $mstat,
+                                       $dob        , $age,
                                        $addressLine, $barangay, 
                                        $city       , $province, 
-                                       $educ       , $gender, 
-                                       $mstat      , $dob, 
-                                       $age        , $license,
-                                       $userLevel) {
-                                       $stmt = $this->conn->prepare("INSERT INTO applicant (user_fname     , user_lname, 
+                                       $educ       , $userLevel
+                                       ) {
+                                       $stmt = $this->conn->prepare("INSERT INTO applicant (user_fname     , user_lname, user_suffix,
                                                                                            user_email      , user_contact, 
-                                                                                           user_pwd        , access, 
+                                                                                           user_pwd        , access,
+                                                                                           user_gender     , user_mstat,
+                                                                                           user_dob        , user_age,
+
                                                                                            user_addressLine, user_barangay, 
                                                                                            user_city       , user_province, 
-                                                                                           user_educ       , user_gender,
-                                                                                           user_mstat      , user_dob, 
-                                                                                           user_age        , user_license,
-                                                                                           user_level) 
-                                                                                           VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                       $stmt->bind_param("ssssssssssssssiss", $firstname  , $lastname, 
-                                                                             $email      , $contactNumber, 
-                                                                             $password   , $access, 
-                                                                             $addressLine, $barangay, 
-                                                                             $city       , $province, 
-                                                                             $educ       , $gender, 
-                                                                             $mstat      , $dob, 
-                                                                             $age        , $license,
-                                                                             $userLevel);
+                                                                                           user_educ       , user_level 
+                                                                                           ) 
+                                                                                           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                       $stmt->bind_param("ssssssssssissssss", $firstname , $lastname,  $suffix,
+                                                                               $email      , $contactNumber, 
+                                                                               $password   , $access, 
+                                                                               $gender     , $mstat,
+                                                                               $dob        , $age,
+                                                                               $addressLine, $barangay, 
+                                                                               $city       , $province, 
+                                                                               $educ       , $userLevel,
+                                                                               );
                                        $stmt->execute();
                                        $stmt->close();
                                    }
 
-    public function insertEmployerInfo($firstname   , $lastname, 
+    public function insertEmployerInfo($firstname   , $lastname,  $suffix,
                                        $email       , $contactNumber, 
                                        $password    , $access, 
                                        $organization, $occupation, 
                                        $addressLine , $barangay, 
                                        $city        , $province,
                                        $employerType) {
-                                       $stmt = $this->conn->prepare("INSERT INTO employer (client_fname       , client_lname, 
+                                       $stmt = $this->conn->prepare("INSERT INTO employer (client_fname       , client_lname,      client_suffix,
                                                                                            client_email       , client_contact, 
                                                                                            client_pwd         , access, 
                                                                                            client_organization, client_occupation, 
                                                                                            client_addressLine , client_barangay, 
                                                                                            client_city        , client_province,
-                                                                                           account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                                       $stmt->bind_param("sssssssssssss", $firstname   , $lastname, 
+                                                                                           account_type) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                                       $stmt->bind_param("ssssssssssssss", $firstname   , $lastname,   $suffix,
                                                                          $email       , $contactNumber, 
                                                                          $password    , $access, 
                                                                          $organization, $occupation, 

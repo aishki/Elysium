@@ -13,7 +13,7 @@ body {
     /* backdrop-filter: blur(4px); */
     /* background: rgb(50,23,77); */
     color: rgb(18, 14, 37);
-    padding: 20px 0;
+    padding: 10px 0;
     margin-bottom: 96px;
     position: fixed;
     width: 100%;
@@ -26,9 +26,16 @@ body {
     transition: background-color 200ms ease-in-out;
     top: 0;
 }
+.navbar.scrolled2 {
+    top: 0;
+    background-image: url('../../Assets/default_bg.png');
+    background-size: cover; /* Scale the background image to cover the entire container */
+    background-attachment: fixed; /* Fixed background */
+    background-position: center; /* Center the background image horizontally and vertically */
+}
 
 .logo img {
-    width: 50px;
+    width: 40px;
     padding-left: 50px;
 }
 
@@ -41,7 +48,7 @@ body {
     padding: 0 20px;
     text-decoration: none;
     color: #F4FAFF;
-    font-size: 17px;
+    font-size: 15px;
     font-weight: normal;
 }
 

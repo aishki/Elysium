@@ -18,26 +18,11 @@ $access = $_SESSION['user_info']['user_type'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="../../Assets/css/gen.css">
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
     <link rel="stylesheet" href="../../Assets/css/home.css">
 </head>
 
-<body class="default">
-    <?php include '../../navbar/navbar.php'; ?>
-
-    <div class = "part">
-            <p>Welcome, <?php echo $currentName; ?> to</p>
-            <h1>Elysium</h1>
-
-            <p>Your access level is: <?php echo $access; ?></p>
-    </div>
-    
-    <div class = "part">
-            <p>Welcome, <?php echo $currentName; ?> to</p>
-            <h1>Elysium</h1>
-
-            <p>Your access level is: <?php echo $access; ?></p>
-    </div>
+<body>
 </body>
+
 </html>
