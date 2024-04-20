@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    <!-- Employer Details -->
+    <!-- Company Details -->
     <div class= "comp_deets stage-div" id="comp_deets" style="display: none;">
         <h2> Company Details</h2>
         <hr class= hrStg>
@@ -81,15 +81,17 @@
             <div class="emp input-group">
                 <label for="company">TIN Number</label>
                 <input autocomplete="TIN" type="text" name="tin" id="tin" placeholder="Business TIN Number"  >
+                <div id="tin_error" class="error-message" style="font-size: 12px; color: red; display: none;"></div>
             </div>
 
             <button type="button" id="checkTinButton" class="checkBtn">Check Tin</button>
         </div>
         
-        <div class="row">
+        <div class="row" style="margin-bottom: 22px;">
             <div class="emp input-group">
                 <label for="company">Company/Organization</label>
                 <input autocomplete="organization" type="text" name="ct_company" id="company1" placeholder="Company/Organization" readonly >
+                <div id="ct_company_error" class="error-message" style="font-size: 12px; color: red; display: block;"></div>
             </div>
             
             <div class="emp input-group">

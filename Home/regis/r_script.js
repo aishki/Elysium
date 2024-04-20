@@ -134,6 +134,7 @@ function validateForm() {
         errorDiv.style.display = "none";
         return true; // Passwords match, form submission allowed
     }
+
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -272,6 +273,26 @@ ageInput.addEventListener('click', function() {
         // Update the age input value
         ageInput.value = age;
     });
+
+
+    // Employer Company Click Event listener
+    const tinError = document.getElementById('tin_error');
+    const ct_companyError = document.getElementById('ct_company_error');
+    const ct_tinInput = document.getElementById('tin');
+    const ct_companyInput = document.getElementById('company1');
+
+    ct_companyInput.addEventListener('click', function() {
+        // Check if the company input is empty
+        if (ct_tinInput.value === "") {
+            // If empty, display error message
+            ct_companyError.textContent = "This is system-generated. Input TIN Number first";
+            ct_companyError.style.display = "block";
+        } else {
+            ct_companyError.textContent = "This is system-generated.";
+            ct_companyError.style.display = "block";
+            ct_companyError.style.color = "#8e8e8e";
+        }
+    });
 });
 
 
@@ -297,13 +318,17 @@ function hideApplicantButtons(){
 }
 
 function setDefaultActiveButton() {
-    // Set "Account Type" button as active by default
-    const accTypeBtn = document.querySelector('.stage:nth-child(1)');
-    accTypeBtn.classList.add('active');
-    
-    // Display the corresponding div for the active button by default
-    const accTypeDiv = document.getElementById('acc_type');
-    accTypeDiv.style.display = 'block';
+    // Check if the email exists parameter is present in the URL
+    const urlParams = new URLSearchParams(window.location.search);
+    if (!urlParams.has('email_exists')) {
+        // Set "Account Type" button as active by default
+        const accTypeBtn = document.querySelector('.stage:nth-child(1)');
+        accTypeBtn.classList.add('active');
+        
+        // Display the corresponding div for the active button by default
+        const accTypeDiv = document.getElementById('acc_type');
+        accTypeDiv.style.display = 'block';
+    }
 }
 
 // Function to calculate age based on date of birth
@@ -327,3 +352,36 @@ function calculateAge(dob) {
 }
 
 
+// Check Tin AJAX
+$(document).ready(function(){
+    $('#checkTinButton').click(function(){
+        console.log("Button clicked"); // Check if the button click event is being triggered
+        var tin = $('#tin').val();
+        console.log("TIN number:", tin); // Check if the TIN number is being retrieved correctly
+           
+        // Make AJAX request to validate TIN number
+        $.ajax({
+            url: 'tin_validation.php',
+            type: 'GET',
+            data: { tin: tin },
+            dataType: 'json',
+            success: function(response) {
+                if (response.valid) {
+                    // If TIN is valid, update company name field
+                    $('#company1').val(response.companyName);
+                    // Hide any previous error messages
+                    $('#tin_error').hide();
+                } else {
+                    // If TIN is not valid, clear company name field and show error message
+                    $('#company1').val('');
+                    $('#tin_error').text('This TIN number is not registered/invalid.').show();
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                // Show error message if there's an error with the AJAX request
+                $('#tin_error').text('Error validating TIN number').show();
+            }
+        });
+    });
+});

@@ -68,13 +68,14 @@ class RegistrationController {
             throw new Exception("Invalid request method.");
         }
         
-        // After setting $email_exists, use it to display the error message and disable the submit button
+        // After setting $email_exists, use it to display the error message and redirect back to the registration page with the error indication
         if ($email_exists) {
-            // Display error message and disable submit button
-            echo '<div id="emailError" style="display: block;">Email already exists.</div>';
-            echo '<script>document.getElementById("submitButton").disabled = true;</script>';
+            // Redirect back to the registration page with an indication of the email error
+            header("Location: ../regis/register.php?email_exists=true");
+            exit();
         }
     }
+
 
 
     private function isEmailUnique($databaseModel, $email) {
@@ -84,8 +85,6 @@ class RegistrationController {
     }
 
 
-
-// not working dumb fuck
     private function insertEmployerInfo($databaseModel, $firstname, $lastname, $suffix, $email, $contactNumber, $password, $access) {
         $employerType = $_POST['emp_type'];
 

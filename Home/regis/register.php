@@ -8,6 +8,9 @@ if (isset($_SESSION['user_info'])) {
     header("Location: ../default/home.php");
     exit(); // Stop further execution
 }
+
+// Check if email exists and set $email_exists flag
+$email_exists = isset($_GET['email_exists']) && $_GET['email_exists'] === 'true';
 ?>
 
 <!DOCTYPE html>
@@ -18,6 +21,7 @@ if (isset($_SESSION['user_info'])) {
     <title>Registration Page</title>
     <link rel="stylesheet" href="../../Assets/css/navbar.css">
     <link rel="stylesheet" href="../../Assets/css/gen.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body class="default">
@@ -216,9 +220,27 @@ if (isset($_SESSION['user_info'])) {
             </form>
 
         </div>
+
+        <?php
+        // Check if email exists and display error message and set active state for general information stage button
+        if ($email_exists) {
+            // Set active state for general information stage button
+            echo '<script>';
+            echo 'document.addEventListener("DOMContentLoaded", function() {';
+            echo '    const genInfoBtn = document.querySelector(".stage:nth-child(2)");';
+            echo '    genInfoBtn.classList.add("active");';
+            echo '    const genInfoDiv = document.getElementById("gen_info");';
+            echo '    genInfoDiv.style.display = "block";';
+            
+            echo '    var EmailerrorDiv = document.getElementById("emailError");';
+            echo '    EmailerrorDiv.style.display = "block";';
+            echo '});';
+            echo '</script>';
+        }
+        ?>
+        
     </div> <!-- end ctnr-->
 
     <script src="r_script.js"></script>
-
 </body>
 </html>
