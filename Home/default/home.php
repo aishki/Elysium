@@ -22,7 +22,8 @@ $access = $_SESSION['user_info']['user_type'];
     <link rel="stylesheet" href="../../Assets/css/home.css">
 </head>
 
-<body>
+<body class="default">
+    <?php include '../../navbar/navbar.php'; ?>
 </body>
 
 </html>
