@@ -240,7 +240,11 @@ if (isset($_GET['tin'])) {
     header('Content-Type: application/json');
     echo json_encode($response);
 } else {
-    // If no TIN number is provided in the request, return an error
-    echo 'Error: No TIN number provided';
+    // If no TIN number is provided in the request, return an error wala gagana depota
+    $response['empty'] = false;
+
+    // Convert the response to JSON format
+    header('Content-Type: application/json');
+    echo json_encode($response);
 }
 ?>

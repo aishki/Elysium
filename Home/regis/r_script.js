@@ -371,6 +371,10 @@ $(document).ready(function(){
                     $('#company1').val(response.companyName);
                     // Hide any previous error messages
                     $('#tin_error').hide();
+                } else if (response.empty) {
+                    // If TIN empty, clear company name field and show error message
+                    $('#company1').val('');
+                    $('#tin_error').text('No TIN number provided.').show();
                 } else {
                     // If TIN is not valid, clear company name field and show error message
                     $('#company1').val('');

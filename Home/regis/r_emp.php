@@ -77,7 +77,7 @@
         <h2> Company Details</h2>
         <hr class= hrStg>
 
-        <div class="row">
+        <div class="row" style="margin-bottom: 22px;">
             <div class="emp input-group">
                 <label for="company">TIN Number</label>
                 <input autocomplete="TIN" type="text" name="tin" id="tin" placeholder="Business TIN Number"  >

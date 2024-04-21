@@ -5,7 +5,7 @@
     $current_page = basename($_SERVER['PHP_SELF']);
 ?>
 
-<link rel="stylesheet" href="../Assets/css/navbar_v2.css">
+<!-- <link rel="stylesheet" href="../Assets/css/navbar_v2.css"> -->
 
 <nav class="navbar">
     <section>
@@ -102,7 +102,7 @@
             </a>
         <?php else: ?>
             <?php if ($access == "Employer") : ?>
-                <a href="../../Profile/Employer/profile.php" title="Profile" class="nav_label">
+                <a href="../../Profile/Employer/profile.php" title="Profile" class="nav_label <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">
                 <svg 
                     fill="inherit" 
                     viewBox="-32 0 512 512" 
@@ -117,7 +117,7 @@
                     <!-- <span class="nav_title">Profile</span> -->
                 </a>
             <?php elseif ($access == "Applicant"): ?>
-                <a href="../../Profile/Applicant/profile.php" title="Profile" class="nav_label">
+                <a href="../../Profile/Applicant/profile.php" title="Profile" class="nav_label <?php echo ($current_page == 'profile.php') ? 'active' : ''; ?>">
                     <svg 
                         fill="inherit" 
                         viewBox="-32 0 512 512" 

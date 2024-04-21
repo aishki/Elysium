@@ -27,6 +27,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'Admin' AS user_type, 
                     admin_fname AS first_name, 
                     admin_lname AS last_name,
+                    NULL AS suffix,
+                    NULL AS contact,
                     NULL AS gender,
                     NULL AS age,
                     NULL AS org,
@@ -39,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     NULL AS educ,
                     NULL AS mstat,
                     NULL AS dob,
-                    NULL AS docs,
+                    NULL AS cv, 
+                    NULL AS cred,
+                    NULL AS license,
                     NULL AS userLevel
                 FROM admin
                 UNION 
@@ -50,6 +54,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'Applicant' AS user_type, 
                     user_fname AS first_name, 
                     user_lname AS last_name,
+                    user_suffix AS suffix,
+                    user_contact AS contact,
                     user_gender AS gender,
                     user_age AS age,
                     NULL AS org,
@@ -62,7 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     user_educ AS educ,
                     user_mstat AS mstat,
                     user_dob AS dob,
-                    user_CV AS docs,
+                    user_CV AS cv,
+                    user_cred AS cred,
+                    user_license AS license,
                     user_level AS userLevel
                 FROM applicant
                 UNION 
@@ -73,6 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     'Employer' AS user_type, 
                     client_fname AS first_name, 
                     client_lname AS last_name,
+                    client_suffix AS suffix,
+                    client_contact AS contact,
                     NULL AS gender,
                     NULL AS age,
                     account_type,
@@ -85,7 +95,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     NULL AS educ,
                     NULL AS mstat,
                     NULL AS dob,
-                    NULL AS docs,
+                    NULL AS cv,
+                    NULL AS cred,
+                    NULL AS license,
                     NULL AS userLevel
                 FROM employer
             ) AS users

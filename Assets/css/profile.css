@@ -1,0 +1,254 @@
+body{
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: row;
+    padding-top: 40px 0;
+    border: 2px solid red;
+}
+
+/* Styling for the sidebar */
+.side-bar {
+    width: 300px;
+    height: 100vh;
+    position: relative;
+    background-color: #f3f3f3;
+    margin-left: 70px;
+    padding: 50px 0;
+    position: fixed;
+}
+  
+.side-options{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    z-index: -1000;
+    gap: 5px;
+}  
+.side-options button{
+    width: inherit;
+}
+
+.p-hdr{
+    align-self: flex-start;
+    font-size: 40px;
+    margin: 30px 10px;
+    padding: 0 50px;
+}
+
+  .value {
+    background-color: transparent;
+    border: none;
+    padding: 10px 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+    position: relative;
+    gap: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 15px;
+  }
+  
+  .value:not(:active):hover {
+    background-color: #21262C;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .value::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: #21262C;
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .value:focus::before,
+  .value:active::before {
+    opacity: 1;
+  }
+  
+  .value svg {
+    width: 20px
+  }
+
+/* Change Profile */
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px
+}
+
+.profile-pic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    transition: all 0.3s ease;
+}
+.profile-pic input {
+    display: none;
+}
+.profile-pic img {
+    position: absolute;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+    border-radius: 100px;
+    z-index: 0;
+}
+.profile-pic .-label {
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+}
+.profile-pic:hover .-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 10000;
+    color: #fafafa;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 100px;
+    margin-bottom: 0;
+}
+.profile-pic span {
+    display: inline-flex;
+    padding: 0.2em;
+    height: 2em;
+}
+
+.name{
+    font-size: 20px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+
+.task-button {
+    position: relative;
+    overflow: hidden;
+    width: 150px;
+    height: 2.5rem;
+    padding: 0 2rem;
+    border-radius: 10px;
+    background: rgb(50,23,77);
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  .task-button:hover::before {
+    transform: scaleX(1);
+  }
+
+  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .task-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background: linear-gradient(
+      82.3deg,
+      rgba(150, 93, 233, 1) 10.8%,
+      rgba(99, 88, 238, 1) 94.3%
+    );
+    transition: all 0.475s;
+  }
+
+  /* Log Out */
+  .logOutBtn {
+    --black: #000000;
+    --ch-black: #141414;
+    --eer-black: #1b1b1b;
+    --night-rider: rgb(50,23,77);
+    --white: #ffffff;
+    --af-white: #f3f3f3;
+    --ch-white: #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: var(--night-rider);
+  }
+  
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sign svg {
+    width: 17px;
+  }
+  
+  .sign svg path {
+    fill: var(--af-white);
+  }
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: var(--af-white);
+    transition-duration: .3s;
+  }
+  /* hover effect on button width */
+  .logOutBtn:hover {
+    width: 150px;
+    border-radius: 10px;
+    transition-duration: .3s;
+  }
+  
+  .logOutBtn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+  /* hover effect button's text */
+  .logOutBtn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+  /* button click effect*/
+  .logOutBtn:active {
+    transform: translate(2px ,2px);
+  }
