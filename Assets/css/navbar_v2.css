@@ -1,0 +1,80 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* Ensure the navbar appears above other content */
+}
+
+.logo img {
+    width: 30px;
+    margin: 30px;
+}
+
+section {
+    --col-purple: #a997cb;
+    --col-dark: #0c0f14;
+    --col-darkGray: #52555a;
+    --col-gray: #aeaeae;
+  
+    width: 70px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--col-dark);
+  }
+  .nav_label {
+    padding: 8px 18px;
+    transition: all 200ms;
+    display: inline-block;
+  }
+  .nav_label input[type="radio"] {
+    display: none;
+  }
+  .nav_label > svg {
+    transition: all 200ms;
+    fill: var(--col-gray);
+    width: 20px;
+  }
+  .nav_label:hover:not(:has(input:checked)) > svg {
+    fill: #987bce;
+    opacity: 0.6;
+  }
+  .nav_label::before {
+    content: "";
+    display: block;
+    width: 0%;
+    height: 1px;
+    border-radius: 5px;
+    position: relative;
+    left: 50%;
+    top: 20px;
+    background: var(--col-purple);
+    transition: all 200ms;
+  }
+  .nav_label > svg {
+    transition: 300ms;
+    fill: var(--col-darkGray);
+    margin-top: 0;
+  }
+  
+  .nav_label.active > svg {
+    fill: var(--col-purple);
+    scale: 1.2;
+    margin-top: -5px;
+  }
+  
+  .nav_label.active::before {
+    width: 100%;
+    left: 0;
+    top: 25px;
+  }
+  
+  .nav_label.active .nav_icon{
+    fill: var(--col-purple);
+    transition: all 200ms;
+  }

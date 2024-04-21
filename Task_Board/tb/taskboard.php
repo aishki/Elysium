@@ -18,14 +18,15 @@ $access = $_SESSION['user_info']['user_type'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Board</title>
-    <link rel="stylesheet" href="../../Assets/css/navbar.css">
+    <!-- <link rel="stylesheet" href="../../Assets/css/navbar.css"> -->
+    <link rel="stylesheet" href="../../Assets/css/navbar_v2.css">
     <link rel="stylesheet" href="../../Assets/css/taskboard.css">
 </head>
 
 <body>
-    <?php include '../../navbar/navbar.php'; ?>
+    <?php include '../../navbar/navbar_v2.php'; ?>
 
-        <div class="TB_header">
+        <!-- <div class="TB_header">
           <div class="welcome-container">
 
             <div class="hdr-msg">
@@ -36,7 +37,7 @@ $access = $_SESSION['user_info']['user_type'];
           </div>
               
 
-        </div> <!--End of header -->
+        </div> End of header -->
 
     <div class="TB_container">
 
@@ -108,7 +109,7 @@ $access = $_SESSION['user_info']['user_type'];
             <div class="column">
                 <div class="welcome-container">
                     <div class="hdr-msg">
-                        <p class="welcome">Tasks</p>
+                        <p class="welcome">Taskboard</p>
                         <p class="wlm-msg">Discover your dream career with Elysium! Explore endless opportunities tailored just for you.</p>
                     </div>  
 
