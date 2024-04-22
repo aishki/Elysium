@@ -8,9 +8,9 @@ if (isset($_POST["submit"])) {
 
     // Define target directory based on user role
     if ($user_role == "Employer") {
-        $target_dir = "Uploads/Employer/";
+        $target_dir = "../Uploads/Employer/";
     } elseif ($user_role == "Applicant") {
-        $target_dir = "Uploads/Applicant/";
+        $target_dir = "../Uploads/Applicant/";
     } else {
         // Default target directory if role is not defined or invalid
         $target_dir = "Uploads/";

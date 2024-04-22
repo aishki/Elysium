@@ -44,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     NULL AS cv, 
                     NULL AS cred,
                     NULL AS license,
-                    NULL AS userLevel
+                    NULL AS userLevel,
+                    NULL AS acc_type
                 FROM admin
                 UNION 
                 SELECT 
@@ -71,7 +72,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     user_CV AS cv,
                     user_cred AS cred,
                     user_license AS license,
-                    user_level AS userLevel
+                    user_level AS userLevel,
+                    NULL AS acc_type
                 FROM applicant
                 UNION 
                 SELECT 
@@ -98,7 +100,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     NULL AS cv,
                     NULL AS cred,
                     NULL AS license,
-                    NULL AS userLevel
+                    NULL AS userLevel,
+                    account_type AS acc_type
                 FROM employer
             ) AS users
             WHERE email = ? AND password = ?";

@@ -103,6 +103,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 11.25H16.5V12.75H10.5V11.25Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 7.5H16.5V9H10.5V7.5Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M10.5 15H16.5V16.5H10.5V15Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 7.5H9V9H7.5V7.5Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 11.25H9V12.75H7.5V11.25Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 15H9V16.5H7.5V15Z" fill="#7D8590"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 4.5L4.5 3.75H19.5L20.25 4.5V19.5L19.5 20.25H4.5L3.75 19.5V4.5ZM5.25 5.25V18.75H18.75V5.25H5.25Z" fill="#7D8590"></path> </g></svg>
                     Job List
                 </button>
+
+                <button class="p_option" data-corresponding-div="pOption_4">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="m109.9 20.63a6.232 6.232 0 0 0 -8.588-.22l-57.463 51.843c-.012.011-.02.024-.031.035s-.023.017-.034.027l-4.721 4.722a1.749 1.749 0 0 0 0 2.475l.341.342-3.16 3.16a8 8 0 0 0 -1.424 1.967 11.382 11.382 0 0 0 -12.055 10.609c-.006.036-.011.074-.015.111a5.763 5.763 0 0 1 -4.928 5.41 1.75 1.75 0 0 0 -.844 3.14c4.844 3.619 9.4 4.915 13.338 4.915a17.14 17.14 0 0 0 11.738-4.545l.182-.167a11.354 11.354 0 0 0 3.348-8.081c0-.225-.02-.445-.032-.667a8.041 8.041 0 0 0 1.962-1.421l3.16-3.161.342.342a1.749 1.749 0 0 0 2.475 0l4.722-4.722c.011-.011.018-.025.029-.036s.023-.018.033-.029l51.844-57.46a6.236 6.236 0 0 0 -.219-8.589zm-70.1 81.311-.122.111c-.808.787-7.667 6.974-17.826 1.221a9.166 9.166 0 0 0 4.36-7.036 1.758 1.758 0 0 0 .036-.273 7.892 7.892 0 0 1 9.122-7.414c.017.005.031.014.048.019a1.717 1.717 0 0 0 .379.055 7.918 7.918 0 0 1 4 13.317zm5.239-10.131c-.093.093-.194.176-.293.26a11.459 11.459 0 0 0 -6.289-6.286c.084-.1.167-.2.261-.3l3.161-3.161 6.321 6.326zm7.214-4.057-9.479-9.479 2.247-2.247 9.479 9.479zm55.267-60.879-50.61 56.092-9.348-9.348 56.092-50.61a2.737 2.737 0 0 1 3.866 3.866z" fill="#7D8590"></path></svg>
+                    Additional Files
+                </button>
             </div>
         </div>
         
@@ -121,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                             // Output the applicant's first name and last name
                             echo "<p class=\"u_name\">" . $user_fn . " " . $user_ln . " " . $user_sufx_display . "</p>";
                         ?>
-                        <span class = "u_info">Employer Account</span> 
+                        <span class = "u_info">Applicant Account</span> 
                         
                     </div>
                 </div>
@@ -157,23 +162,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                         <div class="input-group">
                             <label for="contact">Contact Number</label>
                             <input type="text" name="contact" value="<?php echo $user_contact; ?>" readonly>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="employerType">Employer Type</label>
-                            <input type="text" name="employerType" value="<?php echo $user_acc_type; ?>" readonly>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-group">
-                            <label for="org">Company/Organization</label>
-                            <input type="text" name="org" value="<?php echo $user_organization; ?>" readonly>
-                        </div>
-
-                        <div class="input-group">
-                            <label for="position">Position</label>
-                            <input type="text" name="position" value="<?php echo $user_occ; ?>" readonly>
                         </div>
                     </div>
 
@@ -211,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                                         // Output the applicant's first name and last name
                                         echo "<p class=\"u_name\">" . $user_fn . " " . $user_ln . " " . $user_sufx_display . "</p>";
                                     ?>
-                                    <span class="u_info">Employer Account</span>
+                                    <span class="u_info">Applicant Account</span>
                                 </div>
 
                                 <button type="submit" id="uploadPhotoButton" class="task-button" name="submit">
@@ -264,11 +252,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                                 <label for="contact">Contact Number</label>
                                 <input type="text" name="contact" value="<?php echo $user_contact; ?>">
                             </div>
-
-                            <div class="input-group">
-                                <label for="employerType">Employer Type</label>
-                                <input type="text" name="employerType" value="<?php echo $user_acc_type; ?>" readonly>
-                            </div>
                         </div>
 
                         <div class="row">
@@ -294,6 +277,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
         <div class= "pOptionDiv pOption_3" id= "pOption_3" style="display: none;">
         </div>
 
+        <!-- Additional Files -->
+        <div class= "pOptionDiv pOption_4" id= "pOption_4" style="display: none;">
+        </div>
 
         </div> <!--end p_container -->
 

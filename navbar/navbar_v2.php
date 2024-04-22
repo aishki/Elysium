@@ -3,6 +3,32 @@
     $access = isset($_SESSION['access']) ? $_SESSION['access'] : "";
     // Get the current page URL
     $current_page = basename($_SERVER['PHP_SELF']);
+
+    // Profile Picture
+    $user_role = isset($_SESSION['user_info']['user_type']) ? $_SESSION['user_info']['user_type'] : '';
+    $user_id = isset($_SESSION['user_info']['ID']) ? $_SESSION['user_info']['ID'] : '';
+    $user_ln = isset($_SESSION['user_info']['last_name']) ? $_SESSION['user_info']['last_name'] : '';
+
+    
+    // Define target directory based on user role
+    if ($user_role == "Employer") {
+        $target_dir = "../../Uploads/Employer/";
+    } elseif ($user_role == "Applicant") {
+        $target_dir = "../../Uploads/Applicant/";
+    } else {
+        // Default target directory if role is not defined or invalid
+        $target_dir = "Uploads/";
+    }
+
+    // Define target file name including user ID, last name, and suffix
+    $target_file = $target_dir . $user_id . '_' . $user_ln . "_pp.jpg"; // Assuming profile pictures are always JPEG format
+
+    // Check if the file exists
+    if (file_exists($target_file)) {
+        $profile_pic_src = $target_file;
+    } else {
+        $profile_pic_src = "../../Assets/default_profile.jpg"; // Default profile picture path
+    }
 ?>
 
 <!-- <link rel="stylesheet" href="../Assets/css/navbar_v2.css"> -->
@@ -10,7 +36,7 @@
 <nav class="navbar">
     <section>
         <div class="logo">
-            <img src="../../Assets/logo.png" alt="Logo">  
+          <img src="<?php echo $profile_pic_src; ?>" id="output" width="150" style="border-radius: 50%;" />
         </div>
 
         <a href="../../Home/default/home.php" title="Dashboard" class="nav_label <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>">

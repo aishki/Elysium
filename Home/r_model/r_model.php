@@ -87,5 +87,33 @@ class DatabaseModel {
                                        $stmt->execute();
                                        $stmt->close();
                                    }
+
+    public function updateUserData($firstName, $lastName, $suffix, $userID, $userType) {
+        if ($userType === 'Applicant') {
+            $this->updateApplicantData($firstName, $lastName, $suffix, $userID);
+        } elseif ($userType === 'Employer') {
+            $this->updateEmployerData($firstName, $lastName, $suffix, $userID);
+        } else {
+            // Handle unsupported user types or provide a default behavior
+            echo "Unsupported user type: $userType";
+        }
+    }
+
+    private function updateApplicantData($firstName, $lastName, $suffix, $userID) {
+        // Prepare SQL statement for updating applicant data
+        $stmt = $this->conn->prepare("UPDATE applicant SET user_fname = ?, user_lname = ?, user_suffix = ? WHERE user_id = ?");
+        $stmt->bind_param("sssi", $firstName, $lastName, $suffix, $userID);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    private function updateEmployerData($firstName, $lastName, $suffix, $userID) {
+        // Prepare SQL statement for updating employer data
+        $stmt = $this->conn->prepare("UPDATE employer SET client_fname = ?, client_lname = ?, client_suffix = ? WHERE client_ID = ?");
+        $stmt->bind_param("sssi", $firstName, $lastName, $suffix, $userID);
+        $stmt->execute();
+        $stmt->close();
+    }
+                                
 }
 ?>

@@ -7,18 +7,15 @@ body{
     display: flex;
     flex-direction: row;
     padding-top: 40px 0;
-    border: 2px solid red;
 }
 
 /* Styling for the sidebar */
 .side-bar {
     width: 300px;
-    height: 100vh;
-    position: relative;
+    height: calc(100vh - 100px);
     background-color: #f3f3f3;
     margin-left: 70px;
     padding: 50px 0;
-    position: fixed;
 }
   
 .side-options{
@@ -26,7 +23,7 @@ body{
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: 100vh;
+    height: inherit;
     z-index: -1000;
     gap: 5px;
 }  
@@ -41,7 +38,7 @@ body{
     padding: 0 50px;
 }
 
-  .value {
+  .p_option {
     background-color: transparent;
     border: none;
     padding: 10px 50px;
@@ -55,13 +52,13 @@ body{
     font-size: 15px;
   }
   
-  .value:not(:active):hover {
+  .p_option:not(.active):hover {
     background-color: #21262C;
     color: white;
     transition: all 0.3s ease;
   }
   
-  .value::before {
+  .p_option::before {
     content: "";
     position: absolute;
     right: 0;
@@ -73,20 +70,120 @@ body{
     transition: all 0.3s ease;
   }
   
-  .value:focus::before,
-  .value:active::before {
+  .p_option.active{
+    font-weight: bolder;
+  }
+
+  .p_option:focus::before,
+  .p_option.active::before {
     opacity: 1;
   }
   
-  .value svg {
+  .p_option svg {
     width: 20px
   }
 
-/* Change Profile */
-form{
+/* right side container */
+.p_container{
+    flex: 1;
+    padding: 80px;
     display: flex;
     flex-direction: column;
-    gap: 15px
+}
+
+.u_acc{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ad_acc{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.u_info{
+    opacity: .8;
+    font-size: 15px;
+}
+
+.p_info_container{
+    margin: 40px 0;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.p_info_container img {
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
+    border-radius: 100px;
+}
+
+.u_name{
+    font-size: 15px;
+    font-weight: bolder;
+    margin: 0;
+}
+
+.p_hr{
+    width: 100%;
+    color: #f3f3f3;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* margin between rows */
+    gap: 20px;
+}
+
+.input-group {
+    width: 100%;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    font-size: 15px;
+
+}
+
+.input-group input {
+    width: 100%;
+    height: 40px;
+    padding: 15px;
+    border: 2px solid #734EBF;
+    border-radius: 15px;
+    background-color: #2B1D5A;
+    color: #ffffff;
+    box-sizing: border-box; 
+}
+
+/* Change Profile */
+.mod{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.pOption_1 form, .mod form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+}
+
+.prof{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .profile-pic {
@@ -104,16 +201,18 @@ form{
 .profile-pic img {
     position: absolute;
     object-fit: cover;
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     box-shadow: 0 0 10px 0 rgba(255, 255, 255, .35);
     border-radius: 100px;
-    z-index: 0;
+    z-index: 4000;
 }
 .profile-pic .-label {
     cursor: pointer;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+    font-size: 15px;
 }
 .profile-pic:hover .-label {
     display: flex;
