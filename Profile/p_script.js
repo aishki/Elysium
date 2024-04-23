@@ -1,6 +1,8 @@
 var loadFile = function (event) {
     var image = document.getElementById("output");
+    var image9 = document.getElementById("output_change");
     image.src = URL.createObjectURL(event.target.files[0]);
+    image9.src = URL.createObjectURL(event.target.files[0]);
   };
   
 function setupEventListeners() {
@@ -32,11 +34,11 @@ function setupEventListeners() {
 
 function setDefaultActiveButton() {
   // Set "Account details" button as active by default
-  const accDeet = document.querySelector('.p_option[data-corresponding-div="pOption_2"]');
+  const accDeet = document.querySelector('.p_option[data-corresponding-div="pOption_1"]');
   accDeet.classList.add('active');
   
   // Display the corresponding div for the active button by default
-  const accDeetDiv = document.getElementById('pOption_2');
+  const accDeetDiv = document.getElementById('pOption_1');
   accDeetDiv.style.display = 'block';
 }
 

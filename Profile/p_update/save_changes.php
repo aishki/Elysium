@@ -10,6 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $firstName = $_POST['fname'];
     $lastName = $_POST['lname'];
     $suffix = $_POST['sufx'];
+    $email = $_POST['email'];
+    $contact = $_POST['contact'];
 
     // Check if the user ID is set in the session
     if (isset($_SESSION['user_info']['ID'])) {
@@ -21,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Update user data
         $userType = $_SESSION['user_info']['user_type'];
-        $databaseModel->updateUserData($firstName, $lastName, $suffix, $userID, $userType);
+        $databaseModel->updateUserData($firstName, $lastName, $suffix, $email, $contact, $userID, $userType);
 
         // Respond with success
         http_response_code(200);

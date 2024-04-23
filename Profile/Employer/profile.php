@@ -113,17 +113,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                 <span class = "u_acc">User Account</span> <br>
                 <span class = "u_info">View your account photo and details here</span> 
 
-                <div class = "p_info_container">
-                    <img src="<?php echo $profile_pic_src; ?>" id="output" width="150" />
-                
-                    <div class= "user">
-                        <?php 
-                            // Output the applicant's first name and last name
-                            echo "<p class=\"u_name\">" . $user_fn . " " . $user_ln . " " . $user_sufx_display . "</p>";
-                        ?>
-                        <span class = "u_info">Employer Account</span> 
-                        
+                <div class= "mod">
+                    <div class = "p_info_container">
+                        <img src="<?php echo $profile_pic_src; ?>" id="output" width="150" />
+                    
+                        <div class= "user">
+                            <?php 
+                                // Output the employer's first name and last name
+                                echo "<p class=\"u_name\">" . $user_fn . " " . $user_ln . " " . $user_sufx_display . "</p>";
+                            ?>
+                            <span class = "u_info">Employer Account</span> 
+                        </div>
                     </div>
+
+                    <form action="../log-out.php" method="post">
+                        <div class="LO-container">
+                            <button class="logOutBtn">
+                                <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
+                                <div class="text">Logout</div>
+                            </button>
+                        </div>
+                    </form>                
                 </div>
 
                 <hr class= "p_hr">
@@ -144,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 
                         <div class="input-group">
                             <label for="suffix">Suffix</label>
-                            <input type="text" name="sufx" value="<?php echo $$user_sufx_display; ?>" readonly>
+                            <input type="text" name="sufx" value="<?php echo $user_sufx_display; ?>" readonly>
                         </div>
                     </div>
 
@@ -202,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
                                     <span>Change Image</span>
                                 </label>
                                 <input id="file" type="file" name="file" onchange="loadFile(event)" />
-                                <img src="<?php echo $profile_pic_src; ?>" id="output" width="200" />
+                                <img src="<?php echo $profile_pic_src; ?>" id="output_change" class="logo_img" width="200" />
                             </div>
 
                             <div class="prof">
@@ -216,15 +226,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 
                                 <button type="submit" id="uploadPhotoButton" class="task-button" name="submit">
                                     <span class="button-content">Upload Photo</span>
-                                </button>
-                            </div>
-                        </form>
-
-                        <form action="../log-out.php" method="post">
-                            <div class="LO-container">
-                                <button class="logOutBtn">
-                                    <div class="sign"><svg viewBox="0 0 512 512"><path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"></path></svg></div>
-                                    <div class="text">Logout</div>
                                 </button>
                             </div>
                         </form>
