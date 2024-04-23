@@ -276,6 +276,91 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
 
         <!-- Job List -->
         <div class= "pOptionDiv pOption_3" id= "pOption_3" style="display: none;">
+        <div class = "ad_acc">List of Jobs Applied</div> 
+
+            <div class= "job-list-container">
+            <?php
+                // Check if the applicant has applied for any jobs
+                if ($applicationDetails->num_rows > 0) {
+                    // Display the job applications
+                    while ($row = $applicationDetails->fetch_assoc()) {
+                        // Check if the job ID has already been displayed
+                        if (!in_array($row["job_ID"], $displayedJobIDs)) {
+                            // Add the job ID to the displayed IDs array
+                            $displayedJobIDs[] = $row["job_ID"];
+                            
+                            // var_dump($row);
+                        echo '
+                            <div class="jobContainer">
+                                <div class= "job_innerdata">
+                                    <div class= "header">
+                                        <!-- Job Name -->
+                                        <h4 class= "jobName">' . $row["jobName"] . '</h4>
+
+                                        <div class= "statusContainer">
+                                        <p class= "label">Status:  </p>
+                                        <h4 class= "status">' . "&nbsp;&nbsp;&nbsp;" . $row["job_status"] . '</h4>
+                                        </div>
+
+                                    </div>
+                                    <hr>
+
+                                    <div class= "jobrow">
+                                        <div class="employer-details">
+                                            <!-- Name of Employer -->
+                                            <p class= "data">' . $row["client_fname"] . " " . $row["client_lname"] .'</p>
+                                            <p class= "label">Employer </p>
+                                        </div>
+                                        
+                                        <div class="mid-data">
+                                            <!-- Salary -->
+                                            <p class= "data">₱'. $row["remuneration"] . '</p>
+                                            <p class= "label">Expected Salary </p>
+                                            <br>
+
+                                            <!-- Date Posted -->
+                                            <p class= "data">' . $row["dateAdded"] . '</p>
+                                            <p class= "label">Date Posted</p>
+
+                                        </div>
+                                        
+                                        <div class="t-data">
+                                            <!-- Deadline -->
+                                            <p class= "data">' . $row["deadline"] .'</p>
+                                            <p class= "label">Deadline</p>
+                                        </div>
+                                    </div> <!-- end of row-->
+
+                                    <a href="#" class="view-applicants-link" data-job-id="' . $row["job_ID"] . '">View Applicants</a>
+                                    <!-- when application_status is changed to "Ongoing" show buttons for "Task Complete" -->
+                        if ($access == 'Applicant') {
+                                    
+                                    <button type="submit" id="uploadPhotoButton" class="task-button" name="submit">
+                                        <span class="button-content">Upload Photo</span>
+                                    </button>
+                        }
+                                </div>
+                            </div>';
+                        }
+                    }
+
+                    
+                } else {
+                    // Display a message if the applicant hasn't applied for any jobs yet
+                    echo '<p>You haven\'t added any tasks yet. Go to the <a href="../../Task_Board/tb/taskboard.php">Taskboard</a> and explore talents!</p>';
+                }
+                ?>
+
+
+                <div id="vm-sidebar">
+                    <button class="close-sidebar">X</button>
+
+                    
+                    </div>
+                    
+                </div>
+            </div> <!--job-list-container-->
+</div>
         </div>
 
         <!-- Additional Files -->

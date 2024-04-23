@@ -39,7 +39,7 @@
           <img src="<?php echo $profile_pic_src; ?>" id="output" width="150" style="border-radius: 50%;" />
         </div>
 
-        <a href="../../Home/default/home.php" title="Dashboard" class="nav_label <?php echo ($current_page == 'home.php') ? 'active' : ''; ?>">
+        <a href="../../Home/default/dashboard.php" title="Dashboard" class="nav_label <?php echo ($current_page == 'dashboard.php') ? 'active' : ''; ?>">
             <svg 
                 fill="inherit" 
                 viewBox="0 0 24 24" 

@@ -170,7 +170,6 @@ public function submitDeletionRequest($applicantID, $employerID) {
 //     return $result;
 // }
 
-// Inside the ProfileModel class
 public function getApplicationsByUserID($userID, $userType) {
     // Determine the column to use based on user type
     $column = ($userType === 'Employer') ? 'job.client_ID' : 'applications_list.applicant_ID';
@@ -179,8 +178,11 @@ public function getApplicationsByUserID($userID, $userType) {
     $stmt = $this->conn->prepare("
         SELECT job.job_ID,
                job.jobName, 
+               job.job_rank, 
                job.remuneration, 
-               job.deadline, 
+               job.deadline,
+               job.job_status,
+               job.dateAdded,
                employer.client_fname, 
                employer.client_lname, 
                applications_list.application_status, 
@@ -212,7 +214,7 @@ public function getApplicationsByUserID($userID, $userType) {
 // for employee applicant list
 
     // Method to fetch applicants for a given job ID
-    public function getApplicantsByJobId($jobId) {
+    public function getApplicantsByJobId($job_ID) {
         // Prepare SQL statement to fetch applicants for the given job ID
         $sql = "
             SELECT applicant.user_fname, applicant.user_lname, applicant.user_contact, applicant.user_level
@@ -223,7 +225,7 @@ public function getApplicationsByUserID($userID, $userType) {
 
         // Prepare and bind parameters
         $stmt = $this->conn->prepare($sql);
-        $stmt->bind_param("i", $jobId);
+        $stmt->bind_param("i", $job_ID);
 
         // Execute the statement
         $stmt->execute();
@@ -244,6 +246,28 @@ public function getApplicationsByUserID($userID, $userType) {
         return $applicants;
     }
     
+    public function getJobDetailsById($job_ID) {
+        $query = "SELECT * FROM job WHERE job_ID = ?";
+        
+        // Prepare and execute the query
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $job_ID); // Assuming job_ID is an integer
+        $stmt->execute();
+        
+        // Get the result
+        $result = $stmt->get_result();
+        
+        // Check if a row was returned
+        if ($result->num_rows > 0) {
+            // Fetch the row as an associative array
+            $job_details = $result->fetch_assoc();
+            return $job_details;
+        } else {
+            // No job details found for the provided job ID
+            return null;
+        }
+    }
+
     // Method to update the application status
     public function updateApplicationStatus($applicationID, $newStatus) {
         // Prepare the SQL statement

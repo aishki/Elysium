@@ -16,7 +16,7 @@ class JobModel {
         
         // Prepare and execute the SQL query to insert the task into the database
         $sql = "INSERT INTO job (client_ID, jobName, job_rank, jobDescription, remuneration, dateAdded, deadline, job_status, dateCompleted)
-                VALUES (?, ?, ?, ?, ?, NOW(), ?, 'Not Completed', NULL)";
+                VALUES (?, ?, ?, ?, ?, NOW(), ?, 'No Applications', NULL)";
         
         // Prepare and bind parameters
         $stmt = $this->conn->prepare($sql);

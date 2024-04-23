@@ -13,7 +13,7 @@
     <!-- dfgdfg -->
     
     <div class="nav-links">
-        <a href="../../Home/default/home.php" class="nav-item <?php echo ($current_page == 'home.php') ? 'login' : ''; ?>">Home</a>
+        <a href="../../Home/default/dashboard.php" class="nav-item <?php echo ($current_page == 'dashboard.php') ? 'login' : ''; ?>">Home</a>
         <a href="#" class="nav-item">About</a>
         <a href="../../Task_Board/TB/taskboard.php" class="nav-item <?php echo ($current_page == 'taskboard.php') ? 'login' : ''; ?>">Task Board</a>
         <a href="#" class="nav-item">Events</a>

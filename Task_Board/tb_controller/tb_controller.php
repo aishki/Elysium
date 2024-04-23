@@ -47,6 +47,7 @@ function handleCreateTask($conn) {
         $jobDescription = htmlspecialchars($_POST['jobDescription']);
         $salary = floatval($_POST['salary']);
         $deadline = $_POST['deadline'];
+        
 
         // Get client from session
         $clientID = $_SESSION['user_info']['ID'];
@@ -118,8 +119,9 @@ function handleApplyForJob($conn) {
         $stmt->execute();
         $stmt->close();
 
-        // Redirect back to the task board page with success message
-        header("Location: ../tb/taskboard.php?success=1");
+        // Return success response
+        header('Content-Type: application/json');
+        echo json_encode(array('status' => 'success'));
         exit();
     } else {
         // User's rank does not meet job requirements

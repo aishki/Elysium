@@ -147,6 +147,7 @@ $access = $_SESSION['user_info']['user_type'];
                             switch ($row["job_rank"]) {
                                 case 'S':
                                     $background_image_url = '../../Assets/S-Rank.jpg';
+                                    $numerical_value = 5;
                                     break;
                                 case 'A':
                                     $background_image_url = '../../Assets/A-Rank.jpg';
@@ -240,6 +241,7 @@ $access = $_SESSION['user_info']['user_type'];
                             echo '<form class="applyForm" method="POST" action="../tb_controller/tb_controller.php">           ';
                             echo '<input type="hidden" name="action" value="apply">                              ';
                             echo '<input type="hidden" name="jobID" value="' . $row["job_ID"] . '">              ';
+                            echo '<input type="hidden" name="jobRank" value="' . $row["job_rank"] . '">              ';
                             echo '<button type="submit" class="applyTaskButton apply-button">                    ';
                             echo '  <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">    ';
                             echo '    <path                                                                         ';
@@ -362,11 +364,14 @@ $access = $_SESSION['user_info']['user_type'];
 
     <script>
         var userRank = '<?php echo $_SESSION["user_info"]["userLevel"]; ?>';
+        var access = '<?php echo $_SESSION['user_info']['user_type'] ?>';
 
-        // Function to show/hide add task form
-        document.getElementById("addTaskButton").addEventListener("click", function() {
-            document.getElementById("addTaskForm").style.display = "block";
-        });
+        if (access == 'Employer') {
+            // Function to show/hide add task form
+            document.getElementById("addTaskButton").addEventListener("click", function() {
+                document.getElementById("addTaskForm").style.display = "block";
+            });
+        }
 
         // Event listener to the "X" button to close the form
         document.getElementById("closeFormButton").addEventListener("click", function() {

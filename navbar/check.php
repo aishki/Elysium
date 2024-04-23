@@ -129,8 +129,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Store user information in session
             $_SESSION['user_info'] = $row;
             $_SESSION['access'] = $row['user_type']; // Setting the access level in session
-            // Redirect to home.php or any other page
-            header("Location: ../default/home.php");
+            // Redirect to dashboard.php or any other page
+            header("Location: ../default/dashboard.php");
             exit();
         } else {
         // Authentication failed
