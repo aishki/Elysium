@@ -1,0 +1,43 @@
+body.default{
+    background-color: #f3f3f3;
+    color: black;
+    display: flex;
+    margin-left: 70px;
+
+
+    width: calc(100vw - 70px); 
+    font-family: "Montserrat", sans-serif;
+}
+
+.construction{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 250px);
+    height: calc(100vh - 250px);
+
+    padding: 100px 200px;
+}
+
+.message{
+    flex: 2;
+}
+
+.message h3{
+    font-size: 70px;
+    margin: 0;
+}
+
+.message h4{
+    font-size: 50px;
+    margin: 0;
+}
+
+.cons{    
+    flex: 2;
+}
+
+.cons img {
+    max-height: 100%;
+    width: auto;
+}

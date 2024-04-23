@@ -79,7 +79,7 @@
             <!-- <span class="nav_title">Taskboard</span> -->
         </a>
 
-        <a href="../../Home/Event/events.php" title="Events" class="nav_label <?php echo ($current_page == 'events.php') ? 'active' : ''; ?>">
+        <a href="../../Event/e_con/events.php" title="Events" class="nav_label <?php echo ($current_page == 'events.php') ? 'active' : ''; ?>">
             <svg 
                 version="1.1" 
                 id="Capa_1" 
@@ -105,7 +105,7 @@
             <!-- <span class="nav_title">Dashboard</span> -->
         </a>
 
-        <a href="../../Home/About/about.php" title="About" class="nav_label <?php echo ($current_page == 'about.php') ? 'active' : ''; ?>">
+        <a href="../../About/abt/about.php" title="About" class="nav_label <?php echo ($current_page == 'about.php') ? 'active' : ''; ?>">
             <svg 
                 viewBox="0 0 24 24" 
                 fill="inherit" 
