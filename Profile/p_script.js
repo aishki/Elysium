@@ -36,11 +36,11 @@ function setupEventListeners() {
 
 function setDefaultActiveButton() {
   // Set "Account details" button as active by default
-  const accDeet = document.querySelector('.p_option[data-corresponding-div="pOption_3"]');
+  const accDeet = document.querySelector('.p_option[data-corresponding-div="pOption_1"]');
   accDeet.classList.add('active');
   
   // Display the corresponding div for the active button by default
-  const accDeetDiv = document.getElementById('pOption_3');
+  const accDeetDiv = document.getElementById('pOption_1');
   accDeetDiv.style.display = 'flex';
 }
 
