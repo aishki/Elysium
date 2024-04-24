@@ -501,8 +501,8 @@
   .row3 {
     display: flex;
     flex-wrap: wrap;
-    /* gap: 15px; */
-    justify-content: space-between;
+    gap: 15px;
+    /* justify-content: space-between; */
     padding-bottom: 100px;
 }
 

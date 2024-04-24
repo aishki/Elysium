@@ -13,7 +13,7 @@ body.log-in{
     border: 1px #9D9D9D solid;
     border-radius: 30px;
 
-    margin: 96px auto 50px auto; 
+    margin: 150px auto 50px auto; 
     padding: 70px;
     text-align: left; 
 }
@@ -61,6 +61,7 @@ body.log-in{
     left: 0;
     color: red;
     display: none;
+    font-size: 12px;
 }
 
 .input-group label {

@@ -142,7 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
     setDefaultActiveButton();
 
     // Define nextButton
-    const nextButton = document.getElementById('nextButton');
+    const nextButton = document.querySelector('.n_button');
     nextButton.addEventListener('click', function() {
         // Get the selected account type
         const accountType = document.getElementById("accountType").textContent;

@@ -5,7 +5,7 @@ session_start();
 // // Check if the user is already logged in
 // if (isset($_SESSION['user_info'])) {
 //     // If logged in, redirect to the home page
-//     header("Location: ../default/dashboard.php");
+//     header("Location: ../default/home.php");
 //     exit(); // Stop further execution
 // }
 
