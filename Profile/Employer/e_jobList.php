@@ -76,30 +76,10 @@
                 <div class="close">Close</div>
             </button>
 
-            <div class="task-info">
-    <?php
-        // Check if the job_ID parameter is present in the URL
-        if (isset($_GET['job_ID'])) {
-            $job_ID = $_GET['job_ID'];
+            <div class="task-info" id="jobDetails">
 
-            // Retrieve job details for the specific job ID
-            $job_details = $profileModel->getJobDetailsById($job_ID); // Modify this function based on your implementation
-            if ($job_details) {
-                echo "Job ID: " . $job_ID;
-                echo '<h4>Job Name: ' . $job_details["jobName"] . '</h4>';
-                echo '<h4>Job Rank: ' . $job_details["job_rank"] . '</h4>';
-                // Add other job details as needed
-            } else {
-                echo '<p>No job details found for the selected job.</p>';
-            }
-        } else {
-            echo '<p>Select a job to view details.</p>';
-            // Get the current URL without the query string...
-            echo $_SERVER['REQUEST_URI'];
-        }
-        ?>
+            </div>
 
-    </div>
 
 
 

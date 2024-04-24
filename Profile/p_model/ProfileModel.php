@@ -247,11 +247,12 @@ public function getApplicationsByUserID($userID, $userType) {
     }
     
     public function getJobDetailsById($job_ID) {
+        // Define the SQL query to retrieve job details by ID
         $query = "SELECT * FROM job WHERE job_ID = ?";
         
         // Prepare and execute the query
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $job_ID); // Assuming job_ID is an integer
+        $stmt->bind_param("i", $job_ID); 
         $stmt->execute();
         
         // Get the result
@@ -267,6 +268,7 @@ public function getApplicationsByUserID($userID, $userType) {
             return null;
         }
     }
+    
 
     // Method to update the application status
     public function updateApplicationStatus($applicationID, $newStatus) {
@@ -551,3 +553,5 @@ public function getApplicationsByUserID($userID, $userType) {
     }    
 }
 ?>
+
+
