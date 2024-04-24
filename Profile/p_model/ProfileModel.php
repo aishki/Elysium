@@ -2,12 +2,14 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-class ProfileModel {
+class ProfileModel
+{
     // Database connection
     private $conn;
 
     // Constructor to initialize the database connection
-    public function __construct() {
+    public function __construct()
+    {
         // Check if the file ../../db_connection.php exists
         $customPath = '../../db_connection.php';
         if (file_exists($customPath)) {
@@ -18,10 +20,11 @@ class ProfileModel {
             $this->conn = include '../db_connection.php';
         }
     }
-    
+
 
     // Check if the new email is unique across tables (applicant, employer, admin)
-    public function isEmailUnique($email) {
+    public function isEmailUnique($email)
+    {
         $stmt1 = $this->conn->prepare("SELECT COUNT(*) as count FROM applicant WHERE user_email = ?");
         $stmt1->bind_param("s", $email);
         $stmt1->execute();
@@ -42,7 +45,8 @@ class ProfileModel {
     }
 
     // Update user's email
-    public function updateEmail($userID, $email) {
+    public function updateEmail($userID, $email)
+    {
 
         $stmt1 = $this->conn->prepare("UPDATE applicant SET user_email = ? WHERE applicant_ID = ?");
         $stmt1->bind_param("si", $email, $userID);
@@ -64,7 +68,8 @@ class ProfileModel {
     }
 
     // Update user's password
-    public function updatePassword($userID, $password) {
+    public function updatePassword($userID, $password)
+    {
         // Hash the new password
         // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
@@ -89,93 +94,96 @@ class ProfileModel {
         $stmt2->close();
     }
 
-// Submit deletion request
-public function submitDeletionRequest($applicantID, $employerID) {
-    // Determine which ID to use based on the provided parameters
-    $ID = ($applicantID !== null) ? $applicantID : $employerID;
-    $column = ($applicantID !== null) ? 'applicant_ID' : 'client_ID';
+    // Submit deletion request
+    public function submitDeletionRequest($applicantID, $employerID)
+    {
+        // Determine which ID to use based on the provided parameters
+        $ID = ($applicantID !== null) ? $applicantID : $employerID;
+        $column = ($applicantID !== null) ? 'applicant_ID' : 'client_ID';
 
-    // Prepare SQL statement to insert a new record into the Petition table
-    $stmt = $this->conn->prepare("INSERT INTO petition (req_name, req_description, req_category, $column) VALUES (?, ?, ?, ?)");
-    
-    // Bind parameters
-    $req_name = "Account Deletion";
-    $req_description = "User wants to delete account";
-    $req_category = "DELETE"; //change to RANK to check
-    $stmt->bind_param("sssi", $req_name, $req_description, $req_category, $ID);
-    
-    // Execute the SQL statement
-    if ($stmt->execute()) {
-        return "Deletion request submitted successfully";
-    } else {
-        return "Error: " . $this->conn->error;
-    }
-    
-    // Close the statement
-    $stmt->close();
-}
+        // Prepare SQL statement to insert a new record into the Petition table
+        $stmt = $this->conn->prepare("INSERT INTO petition (req_name, req_description, req_category, $column) VALUES (?, ?, ?, ?)");
 
-// Check if the user has already submitted a deletion request
-    public function checkExistingDeletionRequest($userID, $userRole) {
-        // Determine which column to check based on the user's role
-        $column = ($userRole === 'applicant') ? 'applicant_ID' : 'client_ID';
-        
-        // Prepare SQL statement to check for existing deletion request
-        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM petition WHERE $column = ? AND req_category = 'DELETE'"); //change to RANK to check
-        $stmt->bind_param("i", $userID);
-        
+        // Bind parameters
+        $req_name = "Account Deletion";
+        $req_description = "User wants to delete account";
+        $req_category = "DELETE"; //change to RANK to check
+        $stmt->bind_param("sssi", $req_name, $req_description, $req_category, $ID);
+
         // Execute the SQL statement
-        $stmt->execute();
-        $stmt->bind_result($count);
-        $stmt->fetch();
-        
+        if ($stmt->execute()) {
+            return "Deletion request submitted successfully";
+        } else {
+            return "Error: " . $this->conn->error;
+        }
+
         // Close the statement
-        $stmt->close();
-        
-        // If count is greater than 0, an existing request is found
-        return $count > 0;
+        // $stmt->close();
     }
 
-// // Inside the ProfileModel class
-// public function getApplicationsByUserID($userID, $userType) {
-//     // Determine the column to use based on user type
-//     $column = ($userType === 'Employer') ? 'job.client_ID' : 'applications_list.applicant_ID';
-    
-//     // Prepare SQL statement to fetch job applications
-//     $stmt = $this->conn->prepare("
-//         SELECT job.jobName, 
-//                job.remuneration, 
-//                job.deadline, 
-//                employer.client_fname, 
-//                employer.client_lname, applications_list.application_status, applications_list.dateApplied
-//         FROM applications_list
-//         INNER JOIN job ON applications_list.job_ID = job.job_ID
-//         INNER JOIN employer ON job.client_ID = employer.client_ID
-//         WHERE $column = ?
-//     ");
-    
-//     // Bind parameter
-//     $stmt->bind_param("i", $userID);
-    
-//     // Execute the SQL statement
-//     $stmt->execute();
+    // Check if the user has already submitted a deletion request
+    // public function checkExistingDeletionRequest($userID, $userRole)
+    // {
+    //     // Determine which column to check based on the user's role
+    //     $column = ($userRole === 'applicant') ? 'applicant_ID' : 'client_ID';
 
-//     // Get the result set
-//     $result = $stmt->get_result();
+    //     // Prepare SQL statement to check for existing deletion request
+    //     $stmt = $this->conn->prepare("SELECT COUNT(*) FROM petition WHERE $column = ? AND req_category = 'DELETE'"); //change to RANK to check
+    //     $stmt->bind_param("i", $userID);
 
-//     // Close the statement
-//     $stmt->close();
+    //     // Execute the SQL statement
+    //     $stmt->execute();
+    //     $stmt->bind_result($count);
+    //     $stmt->fetch();
 
-//     // Return the result set
-//     return $result;
-// }
+    //     // Close the statement
+    //     $stmt->close();
 
-public function getApplicationsByUserID($userID, $userType) {
-    // Determine the column to use based on user type
-    $column = ($userType === 'Employer') ? 'job.client_ID' : 'applications_list.applicant_ID';
-    
-    // Prepare SQL statement to fetch job applications
-    $stmt = $this->conn->prepare("
+    //     // If count is greater than 0, an existing request is found
+    //     return $count > 0;
+    // }
+
+    // // Inside the ProfileModel class
+    // public function getApplicationsByUserID($userID, $userType) {
+    //     // Determine the column to use based on user type
+    //     $column = ($userType === 'Employer') ? 'job.client_ID' : 'applications_list.applicant_ID';
+
+    //     // Prepare SQL statement to fetch job applications
+    //     $stmt = $this->conn->prepare("
+    //         SELECT job.jobName, 
+    //                job.remuneration, 
+    //                job.deadline, 
+    //                employer.client_fname, 
+    //                employer.client_lname, applications_list.application_status, applications_list.dateApplied
+    //         FROM applications_list
+    //         INNER JOIN job ON applications_list.job_ID = job.job_ID
+    //         INNER JOIN employer ON job.client_ID = employer.client_ID
+    //         WHERE $column = ?
+    //     ");
+
+    //     // Bind parameter
+    //     $stmt->bind_param("i", $userID);
+
+    //     // Execute the SQL statement
+    //     $stmt->execute();
+
+    //     // Get the result set
+    //     $result = $stmt->get_result();
+
+    //     // Close the statement
+    //     $stmt->close();
+
+    //     // Return the result set
+    //     return $result;
+    // }
+
+    public function getApplicationsByUserID($userID, $userType)
+    {
+        // Determine the column to use based on user type
+        $column = ($userType === 'Employer') ? 'job.client_ID' : 'applications_list.applicant_ID';
+
+        // Prepare SQL statement to fetch job applications
+        $stmt = $this->conn->prepare("
         SELECT job.job_ID,
                job.jobName, 
                job.job_rank, 
@@ -192,29 +200,30 @@ public function getApplicationsByUserID($userID, $userType) {
         INNER JOIN employer ON job.client_ID = employer.client_ID
         WHERE $column = ?
     ");
-    
-    // Bind parameter
-    $stmt->bind_param("i", $userID);
-    
-    // Execute the SQL statement
-    $stmt->execute();
 
-    // Get the result set
-    $result = $stmt->get_result();
+        // Bind parameter
+        $stmt->bind_param("i", $userID);
 
-    // Close the statement
-    $stmt->close();
+        // Execute the SQL statement
+        $stmt->execute();
 
-    // Return the result set
-    return $result;
-}
+        // Get the result set
+        $result = $stmt->get_result();
+
+        // Close the statement
+        $stmt->close();
+
+        // Return the result set
+        return $result;
+    }
 
 
 
-// for employee applicant list
+    // for employee applicant list
 
     // Method to fetch applicants for a given job ID
-    public function getApplicantsByJobId($job_ID) {
+    public function getApplicantsByJobId($job_ID)
+    {
         // Prepare SQL statement to fetch applicants for the given job ID
         $sql = "
             SELECT applicant.user_fname, applicant.user_lname, applicant.user_contact, applicant.user_level
@@ -245,19 +254,20 @@ public function getApplicationsByUserID($userID, $userType) {
         // Return the array of applicants
         return $applicants;
     }
-    
-    public function getJobDetailsById($job_ID) {
+
+    public function getJobDetailsById($job_ID)
+    {
         // Define the SQL query to retrieve job details by ID
         $query = "SELECT * FROM job WHERE job_ID = ?";
-        
+
         // Prepare and execute the query
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $job_ID); 
+        $stmt->bind_param("i", $job_ID);
         $stmt->execute();
-        
+
         // Get the result
         $result = $stmt->get_result();
-        
+
         // Check if a row was returned
         if ($result->num_rows > 0) {
             // Fetch the row as an associative array
@@ -268,10 +278,11 @@ public function getApplicationsByUserID($userID, $userType) {
             return null;
         }
     }
-    
+
 
     // Method to update the application status
-    public function updateApplicationStatus($applicationID, $newStatus) {
+    public function updateApplicationStatus($applicationID, $newStatus)
+    {
         // Prepare the SQL statement
         $sql = "UPDATE applications_list SET application_status = ? WHERE application_ID = ?";
 
@@ -290,8 +301,9 @@ public function getApplicationsByUserID($userID, $userType) {
     }
 
 
-    public function getAccountTables(){
-            
+    public function getAccountTables()
+    {
+
         $sql = "SELECT * FROM (
             SELECT 
                 applicant_ID AS id,
@@ -341,7 +353,8 @@ public function getApplicationsByUserID($userID, $userType) {
         return $result;
     }
 
-    public function getAccountData($id, $accountType) {
+    public function getAccountData($id, $accountType)
+    {
         $userID = $id;
         $userRole = $accountType;
 
@@ -393,7 +406,7 @@ public function getApplicationsByUserID($userID, $userType) {
             FROM employer
         ) AS users WHERE id = ? AND user_type = ?";
 
-        
+
         // Prepare the statement
         $stmt = $this->conn->prepare($sql);
 
@@ -406,7 +419,7 @@ public function getApplicationsByUserID($userID, $userType) {
         // Get the result
         $result = $stmt->get_result();
 
-        
+
         echo "Number of rows: " . $result->num_rows;
         $accountData = array();
 
@@ -420,7 +433,7 @@ public function getApplicationsByUserID($userID, $userType) {
             // $account_lName = $row["last_name"];
             // $account_gender = $row["gender"];
             // $account_age = $row["age"];
-        
+
             // //neutral variables?
             // $account_org = $row["org"];
             // $account_occ = $row["occ"];
@@ -428,20 +441,20 @@ public function getApplicationsByUserID($userID, $userType) {
             // $account_barangay = $row["brgy"];
             // $account_city = $row["city"];
             // $account_province = $row["province"];
-        
+
             // $account_educ = $row["educ"];
             // $account_mstat = $row["mstat"];
             // $account_dob = $row["dob"];
             // $account_CV = $row["docs"];
-        
-            
+
+
             $accountData['email'] = $row["email"];
             $accountData['password'] = $row["password"];
             $accountData['first_name'] = $row["first_name"];
             $accountData['last_name'] = $row["last_name"];
             $accountData['gender'] = $row["gender"];
             $accountData['age'] = $row["age"];
-        
+
             //neutral variables?
             $accountData['org'] = $row["org"];
             $accountData['occ'] = $row["occ"];
@@ -449,7 +462,7 @@ public function getApplicationsByUserID($userID, $userType) {
             $accountData['brgy'] = $row["brgy"];
             $accountData['city'] = $row["city"];
             $accountData['province'] = $row["province"];
-        
+
             $accountData['educ'] = $row["educ"];
             $accountData['mstat'] = $row["mstat"];
             $accountData['dob'] = $row["dob"];
@@ -463,10 +476,10 @@ public function getApplicationsByUserID($userID, $userType) {
         // Close the statement
         $stmt->close();
         return $accountData;
-
     }
 
-    public function getPetitionTable(){
+    public function getPetitionTable()
+    {
         $sql = "SELECT p.*,
             CASE 
                 WHEN p.applicant_ID IS NOT NULL THEN a.user_fname
@@ -483,20 +496,21 @@ public function getApplicationsByUserID($userID, $userType) {
                 applicant a ON p.applicant_ID = a.applicant_ID
             LEFT JOIN 
                 employer e ON p.client_ID = e.client_ID;";
- 
+
 
         $result = $this->conn->query($sql);
 
         return $result;
     }
 
-    public function deleteAccount($userID, $userRole, $reqID) {
+    public function deleteAccount($userID, $userRole, $reqID)
+    {
         // Delete associated records in the petition table first
         $stmtPetition = $this->conn->prepare("DELETE FROM petition WHERE req_ID = ?");
         $stmtPetition->bind_param("i", $reqID);
         $deletePetitionSuccess = $stmtPetition->execute();
         $stmtPetition->close();
-    
+
         // Determine which table to delete from based on the user's role
         if ($userRole == 'Applicant') {
             // Prepare SQL statement to delete the account and related records
@@ -508,29 +522,29 @@ public function getApplicationsByUserID($userID, $userType) {
             // Handle other cases if necessary
             return false; // Indicate failure if the user role is not recognized
         }
-    
+
         // Check if the statement preparation was successful
         if (!$stmt) {
             echo "Error preparing statement: " . $this->conn->error;
             return false;
         }
-        
+
         // Bind parameters
         $stmt->bind_param("i", $userID);
-    
+
         // Execute the statement
         $deleteSuccess = $stmt->execute();
-    
+
         // Check if execution was successful
         if (!$deleteSuccess) {
             echo "Error executing statement: " . $stmt->error;
             $stmt->close(); // Close the statement before returning
             return false;
         }
-    
+
         // Close the statement
         $stmt->close();
-    
+
         // If deletion from the main table was successful
         if ($deleteSuccess) {
             // Delete associated records in the job table
@@ -538,7 +552,7 @@ public function getApplicationsByUserID($userID, $userType) {
             $stmt2->bind_param("i", $userID);
             $deleteJobSuccess = $stmt2->execute();
             $stmt2->close();
-    
+
             // Check if associated deletions were successful
             if ($deleteJobSuccess && $deletePetitionSuccess) {
                 return true;
@@ -550,8 +564,5 @@ public function getApplicationsByUserID($userID, $userType) {
             echo "Error deleting account";
             return false;
         }
-    }    
+    }
 }
-?>
-
-

@@ -212,8 +212,6 @@ $displayedJobIDs = [];
         <!-- Modify Account -->
             <?php include 'e_modProf.php'?>
 
-
-
         <!-- Job List -->
             <?php include 'e_jobList.php'?>
     </div>

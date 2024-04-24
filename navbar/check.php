@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['user_info'] = $row;
             $_SESSION['access'] = $row['user_type']; // Setting the access level in session
             // Redirect to dashboard.php or any other page
-            header("Location: ../default/dashboard.php");
+            header("Location: ../../Task_Board/tb/taskboard.php");
             exit();
         } else {
         // Authentication failed

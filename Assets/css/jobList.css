@@ -33,11 +33,12 @@
     height: 230px;
     font-family: 'Karla', sans-serif;
 
-    background: #4C3D6A;
-    box-shadow: 0px 1px 20px 5px rgba(115, 78, 191, 0.20) inset;
+    background: #241a32;
+    /* box-shadow: 0px 1px 20px 5px rgba(115, 78, 191, 0.20) inset; */
     border-radius: 40px;
     backdrop-filter: blur(20px);
     margin: 0 auto;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
 
     overflow: hidden; /* Hide any content that overflows the container */
 }
@@ -47,6 +48,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 10px 0;
 }
 
 .jobContainer .jobrow{
