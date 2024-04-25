@@ -42,10 +42,10 @@ $current_page = basename($_SERVER['PHP_SELF']);
         <!-- dfgdfg -->
 
         <div class="nav-links">
-            <a href="Home/default/home.php" class="nav-item <?php echo ($current_page == 'home.php') ? 'login' : ''; ?>">Home</a>
-            <a href="About/abt/about.php" class="nav-item">About</a>
-            <a href="Task_Board/tb/taskboard.php" class="nav-item <?php echo ($current_page == 'taskboard.php') ? 'login' : ''; ?>">Task Board</a>
-            <a href="Event/e_con/events.php" class="nav-item">Events</a>
+            <a href="Home/default/dashboard.php" class="nav-item <?php echo ($current_page == 'home.php') ? 'login' : ''; ?>">Home</a>
+            <a href="#" class="nav-item">About</a>
+            <a href="#" class="nav-item <?php echo ($current_page == 'taskboard.php') ? 'login' : ''; ?>">Task Board</a>
+            <a href="#" class="nav-item">Events</a>
 
             <?php if ($access == "") : ?>
                 <a href="Home/log-in/log-in.php" class="nav-item <?php echo ($current_page == 'log-in.php') ? 'login' : 'login'; ?>">Log-in</a>
